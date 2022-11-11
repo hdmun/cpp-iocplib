@@ -16,6 +16,12 @@
     <Filter Include="include">
       <UniqueIdentifier>{fa04f11e-e003-47c5-b557-a34e728d4b74}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\iocplib">
+      <UniqueIdentifier>{2cd19137-e681-4c51-86e8-533bd97cdeb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\iocplib\src">
+      <UniqueIdentifier>{90ee6e0f-9f84-46e0-a6ca-ad92ac33a1f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -24,6 +30,9 @@
     <ClCompile Include="pch.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="..\include\iocplib\src\win_sock.cpp">
+      <Filter>include\iocplib\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -31,6 +40,9 @@
     </ClInclude>
     <ClInclude Include="..\include\stl.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\iocplib\win_sock.h">
+      <Filter>include\iocplib</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
