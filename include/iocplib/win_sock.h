@@ -29,8 +29,10 @@ namespace iocplib {
 		void SetRecvBufferSize( uint32_t size );
 		void SetSendBufferSize( uint32_t size );
 
+		SOCKET handle() const { return handle_; }
+
 	protected:
-		SOCKET handle;
+		SOCKET handle_;
 	};
 
 
