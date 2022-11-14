@@ -49,6 +49,18 @@ namespace iocplib {
 		return true;
 	}
 
+	void WinSock::Close()
+	{
+		if (handle_ != INVALID_SOCKET) {
+			int ret = ::closesocket(handle_);
+			if (ret == SOCKET_ERROR) {
+				// hmm...
+			}
+
+			handle_ = INVALID_SOCKET;
+		}
+	}
+
 	void WinSock::SetAccept( SOCKET listen_socket )
 	{
 		int ret = ::setsockopt( handle_, SOL_SOCKET, SO_UPDATE_ACCEPT_CONTEXT,

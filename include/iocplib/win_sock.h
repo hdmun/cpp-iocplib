@@ -22,6 +22,7 @@ namespace iocplib {
 		void Bind( const SOCKADDR* pAddr, int len );
 		void Listen( int backlog = SOMAXCONN );
 		bool Connect( const SOCKADDR* pAddr );
+		void Close();
 
 		void SetAccept( SOCKET listen_socket );
 		void SetNonBlocking( bool nonblocking );

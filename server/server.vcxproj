@@ -86,9 +86,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\iocplib\acceptor.h" />
     <ClInclude Include="..\include\iocplib\io_completion_port.h" />
+    <ClInclude Include="..\include\iocplib\overlapped.h" />
     <ClInclude Include="..\include\iocplib\win_sock.h" />
     <ClInclude Include="..\include\stl.h" />
+    <ClCompile Include="..\include\iocplib\src\acceptor.cpp" />
     <ClCompile Include="..\include\iocplib\src\io_completion_port.cpp" />
     <ClCompile Include="..\include\iocplib\src\win_sock.cpp" />
     <ClCompile Include="main.cpp" />
