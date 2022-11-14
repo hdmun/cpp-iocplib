@@ -13,9 +13,6 @@ namespace iocplib {
 		socket_ = std::make_shared<WinSock>();
 		socket_->Create(AF_INET, SOCK_STREAM, 0);
 
-		const DWORD dwLocalAddressLength = 16 + sizeof(SOCKADDR_IN);
-		const DWORD dwRemoteAddressLength = 16 + sizeof(SOCKADDR_IN);
-
 		// https://learn.microsoft.com/en-us/windows/win32/api/mswsock/nf-mswsock-acceptex
 		DWORD dwBytesReceived = 0;
 		BOOL bRet = ::AcceptEx(
