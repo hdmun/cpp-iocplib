@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "../io_completion_port.h"
+#include "../overlapped.h"
 
 namespace iocplib {
 	IoCompletionPortWorker::IoCompletionPortWorker(HANDLE iocp_handle)
@@ -29,7 +30,8 @@ namespace iocplib {
 			}
 
 			DWORD dwError = bSuccess ? 0 : ::GetLastError();
-			// lpOverlapped
+			OverlappedContext context = *reinterpret_cast<OverlappedContext*>(&lpOverlapped);
+			context.callback->OnComplete(context.data, dwError, dwNumberOfBytesTransferred, completionKey);
 		}
 	}
 
