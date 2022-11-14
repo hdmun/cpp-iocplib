@@ -16,7 +16,7 @@ namespace iocplib {
 		virtual ~WinSock();
 
 		WinSock(const WinSock&) = delete;
-		void operator=(const WinSock&) = delete;
+		WinSock operator=(const WinSock&) = delete;
 
 		void Create( int af, int type, int protocol );
 		void Bind( const SOCKADDR* pAddr, int len );
