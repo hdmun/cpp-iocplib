@@ -33,9 +33,6 @@
     <ClCompile Include="..\include\iocplib\src\win_sock.cpp">
       <Filter>include\iocplib\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\include\iocplib\src\acceptor.cpp">
-      <Filter>include\iocplib\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\include\iocplib\src\io_completion_port.cpp">
       <Filter>include\iocplib\src</Filter>
     </ClCompile>
@@ -58,6 +55,9 @@
     </ClInclude>
     <ClInclude Include="..\include\iocplib\io_completion_port.h">
       <Filter>include\iocplib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\iocplib\src\acceptor.hpp">
+      <Filter>include\iocplib\src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

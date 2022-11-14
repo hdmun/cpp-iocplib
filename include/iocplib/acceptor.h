@@ -8,6 +8,7 @@ namespace iocplib {
 	struct OverlappedEventInterface;
 	struct OverlappedContext;
 
+	template<typename _Socket>
 	class AcceptSocket
 		: public OverlappedContext
 	{
@@ -19,7 +20,7 @@ namespace iocplib {
 		LPSOCKADDR GetRemoteAddr();
 		void OnAccept(SOCKET listen_socket);
 
-		std::shared_ptr< WinSock > socket() const { return socket_;  }
+		std::shared_ptr<_Socket> socket() const { return socket_;  }
 
 	private:
 		enum {
@@ -27,9 +28,10 @@ namespace iocplib {
 		};
 
 		TCHAR accept_addr_buffer_[kAddressBufferSize * 2];
-		std::shared_ptr< WinSock > socket_;
+		std::shared_ptr<_Socket> socket_;
 	};
 
+	template<typename _Socket>
 	class Acceptor
 		: public OverlappedEventInterface
 	{
@@ -41,16 +43,18 @@ namespace iocplib {
 		void Close();
 
 		virtual void OnComplete(void* data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey);
-		void OnAccept(DWORD dwError, std::shared_ptr<WinSock> socket, const SOCKADDR_IN* pAddr);
+		void OnAccept(DWORD dwError, std::shared_ptr<_Socket> socket, const SOCKADDR_IN* pAddr);
 
 	private:
 		std::unique_ptr< IoCompletionPort > io_completion_port_;
 		WinSock listen_socket_;
 
-		std::vector< std::unique_ptr<AcceptSocket> > accept_sockets_;
+		std::vector< std::unique_ptr<AcceptSocket<_Socket> > > accept_sockets_;
 
 		std::mutex sockets_lock_;
-		std::list< std::shared_ptr< WinSock > > sockets_;  // connections
+		std::list< std::shared_ptr< _Socket > > sockets_;  // connections
 	};
 }
+
+#include "./src/acceptor.hpp"
 #endif

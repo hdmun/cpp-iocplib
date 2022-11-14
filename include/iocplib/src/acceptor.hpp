@@ -1,16 +1,17 @@
-#include "pch.h"
 #include "../acceptor.h"
 #include "../io_completion_port.h"
 
 namespace iocplib {
-	AcceptSocket::AcceptSocket()
+	template<typename _Socket>
+	AcceptSocket<_Socket>::AcceptSocket()
 	{
 		::ZeroMemory(accept_addr_buffer_, sizeof(accept_addr_buffer_));
 	}
 
-	void AcceptSocket::PostAccept(SOCKET listen_socket)
+	template<typename _Socket>
+	void AcceptSocket<_Socket>::PostAccept(SOCKET listen_socket)
 	{
-		socket_ = std::make_shared<WinSock>();
+		socket_ = std::make_shared<_Socket>();
 		socket_->Create(AF_INET, SOCK_STREAM, 0);
 
 		// https://learn.microsoft.com/en-us/windows/win32/api/mswsock/nf-mswsock-acceptex
@@ -32,7 +33,8 @@ namespace iocplib {
 		}
 	}
 
-	LPSOCKADDR AcceptSocket::GetRemoteAddr()
+	template<typename _Socket>
+	LPSOCKADDR AcceptSocket<_Socket>::GetRemoteAddr()
 	{
 		LPSOCKADDR pLocalAddr = nullptr;
 		INT localLen = 0;
@@ -47,23 +49,26 @@ namespace iocplib {
 		return pRemoteAddr;
 	}
 
-
-	void AcceptSocket::OnAccept(SOCKET listen_socket)
+	template<typename _Socket>
+	void AcceptSocket<_Socket>::OnAccept(SOCKET listen_socket)
 	{
 		socket_->SetAccept(listen_socket);
 	}
 
-	Acceptor::Acceptor()
+	template<typename _Socket>
+	Acceptor<_Socket>::Acceptor()
 		: io_completion_port_(std::make_unique<IoCompletionPort>())
 	{
 
 	}
 
-	Acceptor::~Acceptor()
+	template<typename _Socket>
+	Acceptor<_Socket>::~Acceptor()
 	{
 	}
 
-	bool Acceptor::Open(uint32_t io_thread, const SOCKADDR_IN* pAddr, int backlog /*= SOMAXCONN*/, int accepts /*= 1 */)
+	template<typename _Socket>
+	bool Acceptor<_Socket>::Open(uint32_t io_thread, const SOCKADDR_IN* pAddr, int backlog /*= SOMAXCONN*/, int accepts /*= 1 */)
 	{
 		if (!io_completion_port_->Create(io_thread)) {
 			// log
@@ -78,7 +83,7 @@ namespace iocplib {
 
 		accept_sockets_.reserve(accepts);
 		for (int i = 0; i < accepts; i++) {
-			auto socket = std::make_unique<AcceptSocket>();
+			auto socket = std::make_unique<AcceptSocket<_Socket> >();
 			socket->callback = this;
 			socket->data = socket.get();
 			socket->PostAccept(listen_socket_.handle());
@@ -88,17 +93,20 @@ namespace iocplib {
 		return true;
 	}
 
-	void Acceptor::Close()
+	template<typename _Socket>
+	void Acceptor<_Socket>::Close()
 	{
 		io_completion_port_->Detach();
+		io_completion_port_->Close();
 		io_completion_port_ = nullptr;
 
 		listen_socket_.Close();
 	}
 
-	void Acceptor::OnComplete(void* data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey)
+	template<typename _Socket>
+	void Acceptor<_Socket>::OnComplete(void* data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey)
 	{
-		AcceptSocket* accept_socket = reinterpret_cast<AcceptSocket*>(data);
+		AcceptSocket<_Socket>* accept_socket = reinterpret_cast<AcceptSocket<_Socket>*>(data);
 
 		try {
 			if (dwError == 0) {
@@ -115,7 +123,8 @@ namespace iocplib {
 		accept_socket->PostAccept(listen_socket_.handle());
 	}
 
-	void Acceptor::OnAccept(DWORD dwError, std::shared_ptr<WinSock> socket, const SOCKADDR_IN* pAddr)
+	template<typename _Socket>
+	void Acceptor<_Socket>::OnAccept(DWORD dwError, std::shared_ptr<_Socket> socket, const SOCKADDR_IN* pAddr)
 	{
 		if (dwError != 0) {
 			// accept error
