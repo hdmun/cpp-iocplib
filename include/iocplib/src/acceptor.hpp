@@ -132,6 +132,7 @@ namespace iocplib {
 		}
 
 		{
+			socket->OnAccept(io_completion_port_.get());
 			std::lock_guard<std::mutex> _lock(sockets_lock_);
 			sockets_.push_back(socket);
 		}

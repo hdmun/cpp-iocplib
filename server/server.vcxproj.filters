@@ -36,6 +36,12 @@
     <ClCompile Include="..\include\iocplib\src\io_completion_port.cpp">
       <Filter>include\iocplib\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\include\iocplib\src\server_base.cpp">
+      <Filter>include\iocplib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\iocplib\src\socket_session.cpp">
+      <Filter>include\iocplib\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -54,6 +60,12 @@
       <Filter>include\iocplib</Filter>
     </ClInclude>
     <ClInclude Include="..\include\iocplib\io_completion_port.h">
+      <Filter>include\iocplib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\iocplib\socket_session.h">
+      <Filter>include\iocplib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\iocplib\server_base.h">
       <Filter>include\iocplib</Filter>
     </ClInclude>
     <ClInclude Include="..\include\iocplib\src\acceptor.hpp">

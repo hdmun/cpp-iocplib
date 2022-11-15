@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include <csignal>
 
+#include "iocplib/server_base.h"
 #include "iocplib/win_sock.h"
 
 static iocplib::WinSockInitializer g_winsock_init;
@@ -31,9 +32,14 @@ int main()
 		return -1;
 	}
 
+	iocplib::ServerBase server;
+	server.Open(4000U, 0U);
+
 	while (g_running) {
 		::Sleep(1000);
 	}
+
+	server.Close();
 
 	return 0;
 }
