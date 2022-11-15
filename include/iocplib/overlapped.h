@@ -2,17 +2,32 @@
 #define __OVERLAPPED_H__
 
 namespace iocplib {
-    struct OverlappedEventInterface
+    enum eOverlappedType
     {
-        virtual void OnComplete( void* data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey ) = 0;
+        Recv = 1,
+        Send,
     };
+
+    struct OverlappedEventInterface;
 
     struct OverlappedContext
         : public OVERLAPPED
     {
-        void* data{ nullptr };
+        typedef union {
+            eOverlappedType type;
+            void* obj;
+        } Data;
+
+        Data data;
+
         OverlappedEventInterface* callback{ nullptr };
     };
+
+    struct OverlappedEventInterface
+    {
+        virtual void OnComplete(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey) = 0;
+    };
+
 }
 
 #endif

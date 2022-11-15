@@ -42,7 +42,7 @@ namespace iocplib {
 		bool Open(uint32_t io_thread, const SOCKADDR_IN* pAddr, int backlog = SOMAXCONN, int accepts = 1);
 		void Close();
 
-		virtual void OnComplete(void* data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey);
+		virtual void OnComplete(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey);
 		void OnAccept(DWORD dwError, std::shared_ptr<_Socket> socket, const SOCKADDR_IN* pAddr);
 
 	private:

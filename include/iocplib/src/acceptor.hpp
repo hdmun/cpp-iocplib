@@ -85,7 +85,7 @@ namespace iocplib {
 		for (int i = 0; i < accepts; i++) {
 			auto socket = std::make_unique<AcceptSocket<_Socket> >();
 			socket->callback = this;
-			socket->data = socket.get();
+			socket->data.obj = socket.get();
 			socket->PostAccept(listen_socket_.handle());
 			accept_sockets_.push_back(std::move(socket));
 		}
@@ -104,9 +104,9 @@ namespace iocplib {
 	}
 
 	template<typename _Socket>
-	void Acceptor<_Socket>::OnComplete(void* data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey)
+	void Acceptor<_Socket>::OnComplete(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey)
 	{
-		AcceptSocket<_Socket>* accept_socket = reinterpret_cast<AcceptSocket<_Socket>*>(data);
+		AcceptSocket<_Socket>* accept_socket = reinterpret_cast<AcceptSocket<_Socket>*>(data.obj);
 
 		try {
 			if (dwError == 0) {
