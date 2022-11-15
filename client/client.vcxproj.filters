@@ -16,6 +16,15 @@
     <Filter Include="include">
       <UniqueIdentifier>{66977d52-e5b2-45ea-a6a4-47da64fbbaec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\iocplib">
+      <UniqueIdentifier>{7bff2c11-5035-4b1f-bc6d-536a4c920972}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\message">
+      <UniqueIdentifier>{a722415f-216c-443c-a98f-8bbed6d23f20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\flatbuffers">
+      <UniqueIdentifier>{a5edb760-b308-48ea-b97e-1a1fb26f4ba1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="client.cpp">
@@ -31,6 +40,99 @@
     </ClInclude>
     <ClInclude Include="..\include\stl.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\iocplib\win_sock.h">
+      <Filter>include\iocplib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\message\monster_generated.h">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\allocator.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\array.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\base.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\bfbs_generator.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\buffer.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\buffer_ref.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\code_generators.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\default_allocator.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\detached_buffer.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\flatbuffer_builder.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\flatbuffers.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\flatc.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\flex_flat_util.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\flexbuffers.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\grpc.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\hash.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\idl.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\minireflect.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\reflection.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\reflection_generated.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\registry.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\stl_emulation.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\string.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\struct.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\table.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\util.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\vector.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\vector_downward.h">
+      <Filter>include\flatbuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\flatbuffers\verifier.h">
+      <Filter>include\flatbuffers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

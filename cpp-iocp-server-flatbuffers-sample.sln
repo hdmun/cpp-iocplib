@@ -4,8 +4,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "server", "server\server.vcxproj", "{80B1A206-3DEE-4FEE-8575-52B4C41679E0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B7DB19FE-5DEE-4A3B-B2D6-93E2385F6B56} = {B7DB19FE-5DEE-4A3B-B2D6-93E2385F6B56}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "client", "client\client.vcxproj", "{0D8A15BE-2186-4E3C-B446-448ECEE8092F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B7DB19FE-5DEE-4A3B-B2D6-93E2385F6B56} = {B7DB19FE-5DEE-4A3B-B2D6-93E2385F6B56}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "message", "message\message.vcxproj", "{B7DB19FE-5DEE-4A3B-B2D6-93E2385F6B56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +29,10 @@ Global
 		{0D8A15BE-2186-4E3C-B446-448ECEE8092F}.Debug|x64.Build.0 = Debug|x64
 		{0D8A15BE-2186-4E3C-B446-448ECEE8092F}.Release|x64.ActiveCfg = Release|x64
 		{0D8A15BE-2186-4E3C-B446-448ECEE8092F}.Release|x64.Build.0 = Release|x64
+		{B7DB19FE-5DEE-4A3B-B2D6-93E2385F6B56}.Debug|x64.ActiveCfg = Debug|x64
+		{B7DB19FE-5DEE-4A3B-B2D6-93E2385F6B56}.Debug|x64.Build.0 = Debug|x64
+		{B7DB19FE-5DEE-4A3B-B2D6-93E2385F6B56}.Release|x64.ActiveCfg = Release|x64
+		{B7DB19FE-5DEE-4A3B-B2D6-93E2385F6B56}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

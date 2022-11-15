@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="idl">
+      <UniqueIdentifier>{914faaec-a398-44c6-a82a-73843b12c0c3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="idl\monster.fbs">
+      <Filter>idl</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

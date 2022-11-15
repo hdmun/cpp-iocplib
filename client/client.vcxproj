@@ -95,6 +95,37 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\flatbuffers\allocator.h" />
+    <ClInclude Include="..\include\flatbuffers\array.h" />
+    <ClInclude Include="..\include\flatbuffers\base.h" />
+    <ClInclude Include="..\include\flatbuffers\bfbs_generator.h" />
+    <ClInclude Include="..\include\flatbuffers\buffer.h" />
+    <ClInclude Include="..\include\flatbuffers\buffer_ref.h" />
+    <ClInclude Include="..\include\flatbuffers\code_generators.h" />
+    <ClInclude Include="..\include\flatbuffers\default_allocator.h" />
+    <ClInclude Include="..\include\flatbuffers\detached_buffer.h" />
+    <ClInclude Include="..\include\flatbuffers\flatbuffers.h" />
+    <ClInclude Include="..\include\flatbuffers\flatbuffer_builder.h" />
+    <ClInclude Include="..\include\flatbuffers\flatc.h" />
+    <ClInclude Include="..\include\flatbuffers\flexbuffers.h" />
+    <ClInclude Include="..\include\flatbuffers\flex_flat_util.h" />
+    <ClInclude Include="..\include\flatbuffers\grpc.h" />
+    <ClInclude Include="..\include\flatbuffers\hash.h" />
+    <ClInclude Include="..\include\flatbuffers\idl.h" />
+    <ClInclude Include="..\include\flatbuffers\minireflect.h" />
+    <ClInclude Include="..\include\flatbuffers\reflection.h" />
+    <ClInclude Include="..\include\flatbuffers\reflection_generated.h" />
+    <ClInclude Include="..\include\flatbuffers\registry.h" />
+    <ClInclude Include="..\include\flatbuffers\stl_emulation.h" />
+    <ClInclude Include="..\include\flatbuffers\string.h" />
+    <ClInclude Include="..\include\flatbuffers\struct.h" />
+    <ClInclude Include="..\include\flatbuffers\table.h" />
+    <ClInclude Include="..\include\flatbuffers\util.h" />
+    <ClInclude Include="..\include\flatbuffers\vector.h" />
+    <ClInclude Include="..\include\flatbuffers\vector_downward.h" />
+    <ClInclude Include="..\include\flatbuffers\verifier.h" />
+    <ClInclude Include="..\include\iocplib\win_sock.h" />
+    <ClInclude Include="..\include\message\monster_generated.h" />
     <ClInclude Include="..\include\stl.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
