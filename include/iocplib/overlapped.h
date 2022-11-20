@@ -13,12 +13,18 @@ namespace iocplib {
     struct OverlappedContext
         : public OVERLAPPED
     {
+        OverlappedContext()
+        {
+            std::memset(this, 0, sizeof(*this));
+        }
+
         typedef union {
             eOverlappedType type;
             void* obj;
         } Data;
 
         Data data;
+        bool zero_byet_recv{ false };
 
         OverlappedEventInterface* callback{ nullptr };
     };

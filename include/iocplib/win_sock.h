@@ -9,6 +9,10 @@
 
 namespace iocplib {
 
+	enum {
+		kSocketBufferSize = 1460,
+	};
+
 	class WinSock
 	{
 	public:
@@ -23,6 +27,8 @@ namespace iocplib {
 		void Listen( int backlog = SOMAXCONN );
 		bool Connect( const SOCKADDR* pAddr );
 		void Close();
+
+		int Recv(char* buffer, int len, int flag);
 
 		void SetAccept( SOCKET listen_socket );
 		void SetNonBlocking( bool nonblocking );

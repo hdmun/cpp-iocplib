@@ -61,6 +61,11 @@ namespace iocplib {
 		}
 	}
 
+	int WinSock::Recv(char* buffer, int len, int flag)
+	{
+		return ::recv(handle_, buffer, len, flag);
+	}
+
 	void WinSock::SetAccept( SOCKET listen_socket )
 	{
 		int ret = ::setsockopt( handle_, SOL_SOCKET, SO_UPDATE_ACCEPT_CONTEXT,
