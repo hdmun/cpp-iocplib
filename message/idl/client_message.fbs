@@ -1,0 +1,25 @@
+namespace message.client;
+
+
+union PacketType {
+	LoginRequest,
+	LogoutRequest,
+	ConnectServerRequest,
+}
+
+table Packet {
+	type: PacketType;
+}
+
+root_type Packet;
+
+table LoginRequest {
+	id: string;
+	password: string;
+}
+
+table ConnectServerRequest {
+	server_id: short = -1;
+}
+
+table LogoutRequest {}

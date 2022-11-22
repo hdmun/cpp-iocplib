@@ -6,7 +6,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="idl\monster.fbs">
+    <CustomBuild Include="idl\client_message.fbs">
       <Filter>idl</Filter>
     </CustomBuild>
   </ItemGroup>

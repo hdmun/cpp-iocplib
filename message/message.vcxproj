@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="idl\monster.fbs">
+    <CustomBuild Include="idl\client_message.fbs">
       <FileType>Document</FileType>
     </CustomBuild>
   </ItemGroup>
