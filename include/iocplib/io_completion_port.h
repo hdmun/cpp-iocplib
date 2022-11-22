@@ -29,6 +29,10 @@ namespace iocplib {
 		IoCompletionPort() {}
 		virtual ~IoCompletionPort() {}
 
+		HANDLE handle() const {
+			return handle_;
+		}
+
 		bool Create(uint32_t io_thread = 0U);
 		void Close();
 

@@ -42,6 +42,9 @@
     <ClCompile Include="..\include\iocplib\src\socket_session.cpp">
       <Filter>include\iocplib\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\include\iocplib\src\socket_buffer.cpp">
+      <Filter>include\iocplib\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -70,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="..\include\iocplib\src\acceptor.hpp">
       <Filter>include\iocplib\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\iocplib\socket_buffer.h">
+      <Filter>include\iocplib</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

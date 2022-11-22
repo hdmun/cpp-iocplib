@@ -5,6 +5,7 @@
 
 namespace iocplib {
 	class IoCompletionPort;
+	class SocketBuffer;
 	class SocketSession;
 
 	class SessionReceiver
@@ -26,6 +27,34 @@ namespace iocplib {
 		uint8_t buffer_[kSocketBufferSize];
 	};
 
+	class SessionSender
+	{
+	public:
+		SessionSender(SocketSession* session);
+		virtual ~SessionSender();
+
+		SessionSender(const SessionSender&) = delete;
+		SessionSender operator=(const SessionSender&) = delete;
+
+		void SendAsync(uint8_t* data, uint32_t size);
+
+		int BeginSend();
+		void OnSend(DWORD dwError, DWORD dwBytesTransferred);
+
+	private:
+		void PostCompletionPortSignal(HANDLE iocp_handle);
+
+	private:
+		SocketSession* session_;
+		OverlappedContext overlapped_context_;
+
+		bool post_send_signal{ false };
+		std::queue<std::unique_ptr<SocketBuffer> > send_queue_;
+
+		std::list<std::unique_ptr<SocketBuffer> > sending_packets_;
+		std::uint32_t sending_offset_{ 0 };
+	};
+
 	class SocketSession
 		: public WinSock
 		, public OverlappedEventInterface
@@ -34,14 +63,17 @@ namespace iocplib {
 		SocketSession();
 		virtual ~SocketSession() {}
 
+		HANDLE GetIocpHandle() const;
+
 		void OnAccept(IoCompletionPort* iocp);
-		void OnReceivePacket(const uint8_t* buffer, uint32_t received) {}
+		virtual void OnReceivePacket(const uint8_t* buffer, uint32_t received) {}
 
 		virtual void OnComplete(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey) override;
 
 	private:
 		IoCompletionPort* iocp_{ nullptr };
 		SessionReceiver receiver_;
+		SessionSender sender_;
 	};
 }
 
