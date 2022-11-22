@@ -45,6 +45,12 @@
     <ClCompile Include="..\include\iocplib\src\socket_buffer.cpp">
       <Filter>include\iocplib\src</Filter>
     </ClCompile>
+    <ClCompile Include="client_session.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\iocplib\src\packet.cpp">
+      <Filter>include\iocplib\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -75,6 +81,12 @@
       <Filter>include\iocplib\src</Filter>
     </ClInclude>
     <ClInclude Include="..\include\iocplib\socket_buffer.h">
+      <Filter>include\iocplib</Filter>
+    </ClInclude>
+    <ClInclude Include="client_session.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\iocplib\packet.h">
       <Filter>include\iocplib</Filter>
     </ClInclude>
   </ItemGroup>

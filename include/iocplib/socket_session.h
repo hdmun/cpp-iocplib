@@ -66,7 +66,7 @@ namespace iocplib {
 		HANDLE GetIocpHandle() const;
 
 		void OnAccept(IoCompletionPort* iocp);
-		virtual void OnReceivePacket(const uint8_t* buffer, uint32_t received) {}
+		virtual void OnReceivePacket(uint8_t* buffer, uint32_t received) {}
 
 		virtual void OnComplete(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey) override;
 
