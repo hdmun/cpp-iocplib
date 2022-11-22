@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "../socket_buffer.h"
-#include <exception>
 
 namespace iocplib {
 
