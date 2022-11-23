@@ -5,8 +5,9 @@ namespace iocplib {
 
 	SocketBuffer::SocketBuffer(uint8_t* data, uint32_t size)
 	{
-		buffer_.resize(size + 4);
-		std::copy(data + 4, data + size, buffer_.begin());
+		constexpr uint32_t header_len = 4;
+		buffer_.resize(size + header_len);
+		std::copy(data, data + size, buffer_.begin() + header_len);
 		*reinterpret_cast<uint32_t*>(buffer_.data()) = size;
 	}
 
