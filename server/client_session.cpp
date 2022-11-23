@@ -3,7 +3,9 @@
 #include "message/client_message_generated.h"
 
 #define PACKET_HANDLER(_TYPE, _HANDLER) \
-	case _TYPE: _HANDLER(packet->type_as##_HANDLER())
+	case _TYPE: \
+		_HANDLER(packet->type_as##_HANDLER()); \
+		break; \
 
 
 ClientSession::ClientSession()
