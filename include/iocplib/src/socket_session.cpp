@@ -57,6 +57,10 @@ namespace iocplib {
 						break;  // break while
 					}
 
+					if (received <= 0) {
+						break;
+					}
+
 					session_->OnReceivePacket(buffer_, received);
 				}
 				break;  // break do-while
@@ -75,7 +79,6 @@ namespace iocplib {
 
 	SessionSender::SessionSender(SocketSession* session)
 		: session_(session)
-		, sending_packets_(kSocketBufferSize)
 	{
 		overlapped_context_.data.type = eOverlappedType::Send;
 		overlapped_context_.callback = session_;
@@ -98,6 +101,7 @@ namespace iocplib {
 	int SessionSender::BeginSend()
 	{
 		if (send_queue_.empty()) {
+			post_send_signal = false;
 			return ERROR_SUCCESS;
 		}
 

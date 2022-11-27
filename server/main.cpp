@@ -3,6 +3,7 @@
 
 #include "iocplib/server_base.h"
 #include "iocplib/win_sock.h"
+#include "client_session.h"
 
 static iocplib::WinSockInitializer g_winsock_init;
 static bool g_running = true;
@@ -32,7 +33,7 @@ int main()
 		return -1;
 	}
 
-	iocplib::ServerBase server;
+	iocplib::ServerBase<ClientSession> server;
 	server.Open(4000U, 0U);
 
 	while (g_running) {

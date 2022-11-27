@@ -63,7 +63,17 @@ namespace iocplib {
 
 	int WinSock::Recv(char* buffer, int len, int flag)
 	{
-		return ::recv(handle_, buffer, len, flag);
+		int received = ::recv(handle_, buffer, len, flag);
+		if (received == SOCKET_ERROR) {
+			int err = ::WSAGetLastError();
+			if (err == WSAEWOULDBLOCK) {
+				return 0;
+			}
+
+			// throw exception
+		}
+
+		return received;
 	}
 
 	void WinSock::SetAccept( SOCKET listen_socket )

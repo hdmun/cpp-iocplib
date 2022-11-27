@@ -59,10 +59,11 @@ namespace iocplib {
 		: public WinSock
 		, public OverlappedEventInterface
 	{
-	public:
+	protected:
 		SocketSession();
 		virtual ~SocketSession() {}
 
+	public:
 		HANDLE GetIocpHandle() const;
 
 		void OnAccept(IoCompletionPort* iocp);

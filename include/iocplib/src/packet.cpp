@@ -51,7 +51,7 @@ namespace iocplib {
 
 	const uint8_t* PacketReceiver::buffer() const
 	{
-		return buffer_.data();
+		return buffer_.data() + kPacketLengthSize;
 	}
 
 	void PacketReceiver::Append(uint8_t* buffer, uint32_t append)

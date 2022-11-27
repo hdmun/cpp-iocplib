@@ -94,11 +94,12 @@
     <ClInclude Include="..\include\iocplib\socket_buffer.h" />
     <ClInclude Include="..\include\iocplib\socket_session.h" />
     <ClInclude Include="..\include\iocplib\win_sock.h" />
+    <ClInclude Include="..\include\message\client_message_generated.h" />
     <ClInclude Include="..\include\stl.h" />
     <ClInclude Include="..\include\iocplib\src\acceptor.hpp" />
     <ClCompile Include="..\include\iocplib\src\io_completion_port.cpp" />
     <ClCompile Include="..\include\iocplib\src\packet.cpp" />
-    <ClCompile Include="..\include\iocplib\src\server_base.cpp" />
+    <ClInclude Include="..\include\iocplib\src\server_base.cpp" />
     <ClCompile Include="..\include\iocplib\src\socket_buffer.cpp" />
     <ClCompile Include="..\include\iocplib\src\socket_session.cpp" />
     <ClCompile Include="..\include\iocplib\src\win_sock.cpp" />

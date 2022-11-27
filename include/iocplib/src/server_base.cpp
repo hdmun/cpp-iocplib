@@ -1,13 +1,15 @@
-#include "pch.h"
-#include "../server_base.h"
+#ifndef __SERVER_BASE_CPP__
+#define __SERVER_BASE_CPP__
 
 namespace iocplib {
-	ServerBase::ServerBase()
-		: acceptor_(std::make_unique<Acceptor<SocketSession> >())
+	template <typename _Session>
+	ServerBase<_Session>::ServerBase()
+		: acceptor_(std::make_unique<Acceptor<_Session> >())
 	{
 	}
 
-	bool ServerBase::Open(uint16_t port, uint32_t io_thread)
+	template <typename _Session>
+	bool ServerBase<_Session>::Open(uint16_t port, uint32_t io_thread)
 	{
 		SOCKADDR_IN addr_in = { 0, };
 		addr_in.sin_family = AF_INET;
@@ -22,10 +24,13 @@ namespace iocplib {
 		return true;
 	}
 
-	void ServerBase::Close()
+	template <typename _Session>
+	void ServerBase<_Session>::Close()
 	{
 		if (acceptor_) {
 			acceptor_->Close();
 		}
 	}
 }
+
+#endif

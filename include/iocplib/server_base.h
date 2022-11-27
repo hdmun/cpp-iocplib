@@ -4,6 +4,7 @@
 #include "socket_session.h"
 
 namespace iocplib {
+	template <typename _Session>
 	class ServerBase
 	{
 	public:
@@ -17,8 +18,9 @@ namespace iocplib {
 		ServerBase operator=(const ServerBase&) = delete;
 
 	private:
-		std::unique_ptr<Acceptor<SocketSession> > acceptor_;
+		std::unique_ptr<Acceptor<_Session> > acceptor_;
 	};
 }
 
+#include "src/server_base.cpp"
 #endif
