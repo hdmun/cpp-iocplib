@@ -61,6 +61,21 @@ namespace iocplib {
 		}
 	}
 
+	int WinSock::Send(void* data, int len, int flags /*= 0*/)
+	{
+		int sended = ::send(handle_, reinterpret_cast<char*>(data), len, flags);
+		if (sended == SOCKET_ERROR) {
+			int err = ::WSAGetLastError();
+			if (err == WSAEWOULDBLOCK) {
+				return 0;
+			}
+
+			// throw exception
+		}
+
+		return sended;
+	}
+
 	int WinSock::Recv(char* buffer, int len, int flag)
 	{
 		int received = ::recv(handle_, buffer, len, flag);

@@ -28,6 +28,7 @@ namespace iocplib {
 		bool Connect( const SOCKADDR* pAddr );
 		void Close();
 
+		int Send(void* data, int len, int flags = 0);
 		int Recv(char* buffer, int len, int flag);
 
 		void SetAccept( SOCKET listen_socket );
