@@ -43,10 +43,10 @@ namespace iocplib {
 	bool WinSock::Connect( const SOCKADDR* pAddr )
 	{
 		int ret = ::connect( handle_, pAddr, sizeof( *pAddr ) );
-		if ( ret == SOCKET_ERROR || ::WSAGetLastError() == WSAEWOULDBLOCK ) {
-			return false;
+		if ( ret != SOCKET_ERROR || ::WSAGetLastError() == WSAEWOULDBLOCK ) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	void WinSock::Close()
