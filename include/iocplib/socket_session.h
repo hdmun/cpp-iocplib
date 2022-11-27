@@ -71,6 +71,10 @@ namespace iocplib {
 
 		virtual void OnComplete(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey) override;
 
+		void SendAsync(uint8_t* data, uint32_t size) {
+			sender_.SendAsync(data, size);
+		}
+
 	private:
 		IoCompletionPort* iocp_{ nullptr };
 		SessionReceiver receiver_;

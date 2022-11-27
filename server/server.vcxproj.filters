@@ -92,6 +92,9 @@
     <ClInclude Include="..\include\message\client_message_generated.h">
       <Filter>include\message</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\message\server_mesage_generated.h">
+      <Filter>include\message</Filter>
+    </ClInclude>
     <ClInclude Include="..\include\iocplib\src\server_base.cpp">
       <Filter>include\iocplib\src</Filter>
     </ClInclude>

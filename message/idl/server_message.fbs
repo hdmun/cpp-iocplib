@@ -1,0 +1,24 @@
+namespace message.server;
+
+
+union PacketType {
+	LoginResult,
+	LogoutResult,
+	ConnectServerResult,
+}
+
+table Packet {
+	type: PacketType;
+}
+
+root_type Packet;
+
+table LoginResult {
+	error: int = 0;
+}
+
+table LogoutResult {}
+
+table ConnectServerResult {
+	error: int = 0;
+}

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "client_session.h"
 #include "message/client_message_generated.h"
+#include "message/server_message_generated.h"
 
 #define PACKET_HANDLER(_TYPE, _HANDLER) \
 	case _TYPE: \
@@ -43,16 +44,39 @@ void ClientSession::OnPacket(const message::client::Packet* packet)
 
 void ClientSession::_LoginRequest(const message::client::LoginRequest* request)
 {
-	request->id();
-	request->password();
+	std::cout << "_LoginRequest: ";
+	std::cout << request->id()->c_str() << ", ";
+	std::cout << request->password()->c_str() << std::endl;
+
+	flatbuffers::FlatBufferBuilder builder;
+	auto result = message::server::CreateLoginResult(builder, 0);
+	auto packet = message::server::CreatePacket(builder, message::server::PacketType_LoginResult, result.Union());
+	builder.Finish(packet);
+
+	SendAsync(builder.GetBufferPointer(), builder.GetSize());
 }
 
 void ClientSession::_LogoutRequest(const message::client::LogoutRequest* request)
 {
-	request;
+	std::cout << "_LogoutRequest: " << std::endl;
+
+	flatbuffers::FlatBufferBuilder builder;
+	auto result = message::server::CreateLogoutResult(builder);
+	auto packet = message::server::CreatePacket(builder, message::server::PacketType_LogoutResult, result.Union());
+	builder.Finish(packet);
+
+	SendAsync(builder.GetBufferPointer(), builder.GetSize());
 }
 
 void ClientSession::_ConnectServerRequest(const message::client::ConnectServerRequest* request)
 {
-	request->server_id();
+	std::cout << "_ConnectServerRequest: ";
+	std::cout << request->server_id() << std::endl;
+
+	flatbuffers::FlatBufferBuilder builder;
+	auto result = message::server::CreateConnectServerResult(builder);
+	auto packet = message::server::CreatePacket(builder, message::server::PacketType_ConnectServerResult, result.Union());
+	builder.Finish(packet);
+
+	SendAsync(builder.GetBufferPointer(), builder.GetSize());
 }

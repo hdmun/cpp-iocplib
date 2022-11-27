@@ -9,5 +9,8 @@
     <CustomBuild Include="idl\client_message.fbs">
       <Filter>idl</Filter>
     </CustomBuild>
+    <CustomBuild Include="idl\server_message.fbs">
+      <Filter>idl</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>
