@@ -28,8 +28,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\socket_io_thread.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)iocplib\iocplib.vcxitems" />
-    <None Include="$(MSBuildThisFileDirectory)iocplib\iocplib.vcxitems.filters" />
     <None Include="$(MSBuildThisFileDirectory)winsocklib\winsocklib.vcxitems" />
     <None Include="$(MSBuildThisFileDirectory)winsocklib\winsocklib.vcxitems.filters" />
   </ItemGroup>
