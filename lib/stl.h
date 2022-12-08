@@ -1,10 +1,15 @@
+#ifndef __STL_H__
+#define __STL_H__
 
 #include <iostream>
 #include <memory>
+#include <thread>
+#include <mutex>
+
 #include <vector>
 #include <list>
 #include <map>
 #include <queue>
-#include <thread>
 #include <string>
-#include <mutex>
+
+#endif // __STL_H__

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{95690d2f-92a8-4f82-a3d0-0746711eec32}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\acceptor.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)acceptor.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)io_completion_port.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)overlapped.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)packet.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)server_base.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)socket_buffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)socket_session.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)win_sock.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\server_base.cpp">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\io_completion_port.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\socket_buffer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\socket_session.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\win_sock.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\packet.cpp" />
+  </ItemGroup>
+</Project>

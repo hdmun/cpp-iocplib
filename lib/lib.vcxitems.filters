@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="iocplib">
+      <UniqueIdentifier>{0e913f8d-1d65-4c48-a28c-cd59417cfc26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="winsocklib">
+      <UniqueIdentifier>{fb2b640b-58d0-4eb8-8453-7837cf34dfa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="iocplib\src">
+      <UniqueIdentifier>{fde9b37d-5293-4bbf-ab57-06eae1d4f664}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="winsocklib\src">
+      <UniqueIdentifier>{9ef42977-28f8-4f0d-af1d-19a6d5b253b4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\acceptor.h">
+      <Filter>iocplib</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\io_completion_port.h">
+      <Filter>iocplib</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\overlapped.h">
+      <Filter>iocplib</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\packet.h">
+      <Filter>iocplib</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\server_base.h">
+      <Filter>iocplib</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\socket_buffer.h">
+      <Filter>iocplib</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\socket_session.h">
+      <Filter>iocplib</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\win_sock.h">
+      <Filter>iocplib</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\src\acceptor.hpp">
+      <Filter>iocplib\src</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\client_socket.h">
+      <Filter>winsocklib</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\socket_io_thread.h">
+      <Filter>winsocklib</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\src\client_socket.cpp">
+      <Filter>winsocklib\src</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)stl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)iocplib\iocplib.vcxitems">
+      <Filter>iocplib</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)iocplib\iocplib.vcxitems.filters">
+      <Filter>iocplib</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)winsocklib\winsocklib.vcxitems">
+      <Filter>winsocklib</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)winsocklib\winsocklib.vcxitems.filters">
+      <Filter>winsocklib</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\io_completion_port.cpp">
+      <Filter>iocplib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\packet.cpp">
+      <Filter>iocplib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\server_base.cpp">
+      <Filter>iocplib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\socket_buffer.cpp">
+      <Filter>iocplib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\socket_session.cpp">
+      <Filter>iocplib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\win_sock.cpp">
+      <Filter>iocplib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)winsocklib\src\socket_io_thread.cpp">
+      <Filter>winsocklib\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

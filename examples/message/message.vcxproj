@@ -65,11 +65,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <CustomBuildStep>
-      <Command>flatc -c</Command>
+      <Command>
+      </Command>
     </CustomBuildStep>
     <CustomBuild>
-      <Command>flatc --cpp -o ..\include\message\ %(Identity)</Command>
-      <Outputs>..\include\message\%(Filename)_generated.h</Outputs>
+      <Command>flatc --cpp -o .\ %(Identity)</Command>
+      <Outputs>.\%(Filename)_generated.h</Outputs>
     </CustomBuild>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -92,8 +93,8 @@
       </Command>
     </CustomBuildStep>
     <CustomBuild>
-      <Command>flatc --cpp -o ..\include\message\ %(Identity)</Command>
-      <Outputs>..\include\message\%(Filename)_generated.h</Outputs>
+      <Command>flatc --cpp -o .\ %(Identity)</Command>
+      <Outputs>.\%(Filename)_generated.h</Outputs>
     </CustomBuild>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

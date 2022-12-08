@@ -35,6 +35,7 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
+    <Import Project="..\..\lib\lib.vcxitems" Label="Shared" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -57,7 +58,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -75,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -86,13 +87,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\include\iocplib\src\packet.cpp" />
-    <ClCompile Include="..\..\include\iocplib\src\socket_buffer.cpp" />
-    <ClCompile Include="..\..\include\iocplib\src\win_sock.cpp" />
-    <ClInclude Include="..\..\include\message\client_message_generated.h" />
-    <ClInclude Include="..\..\include\message\server_mesage_generated.h" />
-    <ClInclude Include="..\..\include\winsocklib\src\client_socket.cpp" />
-    <ClInclude Include="..\..\include\winsocklib\src\socket_io_thread.cpp" />
+    <ClInclude Include="..\message\client_message_generated.h" />
+    <ClInclude Include="..\message\server_mesage_generated.h" />
     <ClCompile Include="client.cpp" />
     <ClCompile Include="client_session.cpp" />
     <ClCompile Include="pch.cpp">
@@ -103,41 +99,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\flatbuffers\allocator.h" />
-    <ClInclude Include="..\..\include\flatbuffers\array.h" />
-    <ClInclude Include="..\..\include\flatbuffers\base.h" />
-    <ClInclude Include="..\..\include\flatbuffers\bfbs_generator.h" />
-    <ClInclude Include="..\..\include\flatbuffers\buffer.h" />
-    <ClInclude Include="..\..\include\flatbuffers\buffer_ref.h" />
-    <ClInclude Include="..\..\include\flatbuffers\code_generators.h" />
-    <ClInclude Include="..\..\include\flatbuffers\default_allocator.h" />
-    <ClInclude Include="..\..\include\flatbuffers\detached_buffer.h" />
-    <ClInclude Include="..\..\include\flatbuffers\flatbuffers.h" />
-    <ClInclude Include="..\..\include\flatbuffers\flatbuffer_builder.h" />
-    <ClInclude Include="..\..\include\flatbuffers\flatc.h" />
-    <ClInclude Include="..\..\include\flatbuffers\flexbuffers.h" />
-    <ClInclude Include="..\..\include\flatbuffers\flex_flat_util.h" />
-    <ClInclude Include="..\..\include\flatbuffers\grpc.h" />
-    <ClInclude Include="..\..\include\flatbuffers\hash.h" />
-    <ClInclude Include="..\..\include\flatbuffers\idl.h" />
-    <ClInclude Include="..\..\include\flatbuffers\minireflect.h" />
-    <ClInclude Include="..\..\include\flatbuffers\reflection.h" />
-    <ClInclude Include="..\..\include\flatbuffers\reflection_generated.h" />
-    <ClInclude Include="..\..\include\flatbuffers\registry.h" />
-    <ClInclude Include="..\..\include\flatbuffers\stl_emulation.h" />
-    <ClInclude Include="..\..\include\flatbuffers\string.h" />
-    <ClInclude Include="..\..\include\flatbuffers\struct.h" />
-    <ClInclude Include="..\..\include\flatbuffers\table.h" />
-    <ClInclude Include="..\..\include\flatbuffers\util.h" />
-    <ClInclude Include="..\..\include\flatbuffers\vector.h" />
-    <ClInclude Include="..\..\include\flatbuffers\vector_downward.h" />
-    <ClInclude Include="..\..\include\flatbuffers\verifier.h" />
-    <ClInclude Include="..\..\include\iocplib\packet.h" />
-    <ClInclude Include="..\..\include\iocplib\socket_buffer.h" />
-    <ClInclude Include="..\..\include\iocplib\win_sock.h" />
-    <ClInclude Include="..\..\include\stl.h" />
-    <ClInclude Include="..\..\include\winsocklib\client_socket.h" />
-    <ClInclude Include="..\..\include\winsocklib\socket_io_thread.h" />
     <ClInclude Include="client_session.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>

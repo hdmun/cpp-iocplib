@@ -13,11 +13,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "client", "examples\client\c
 		{B7DB19FE-5DEE-4A3B-B2D6-93E2385F6B56} = {B7DB19FE-5DEE-4A3B-B2D6-93E2385F6B56}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "message", "message\message.vcxproj", "{B7DB19FE-5DEE-4A3B-B2D6-93E2385F6B56}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "message", "examples\message\message.vcxproj", "{B7DB19FE-5DEE-4A3B-B2D6-93E2385F6B56}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{96E580C7-89AC-4E6F-A4E6-504B45EF7CB2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tests", "tests\tests.vcxproj", "{720E4C1A-7119-4662-8D91-1F8ADA62CEF5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lib", "lib\lib.vcxitems", "{9F9F5A4A-5847-48DB-A318-849830F8B16F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,8 +68,14 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{80B1A206-3DEE-4FEE-8575-52B4C41679E0} = {96E580C7-89AC-4E6F-A4E6-504B45EF7CB2}
 		{0D8A15BE-2186-4E3C-B446-448ECEE8092F} = {96E580C7-89AC-4E6F-A4E6-504B45EF7CB2}
+		{B7DB19FE-5DEE-4A3B-B2D6-93E2385F6B56} = {96E580C7-89AC-4E6F-A4E6-504B45EF7CB2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D302575-1BBB-431A-AF0F-355A86FE34C0}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		lib\lib.vcxitems*{0d8a15be-2186-4e3c-b446-448ecee8092f}*SharedItemsImports = 4
+		lib\lib.vcxitems*{80b1a206-3dee-4fee-8575-52b4c41679e0}*SharedItemsImports = 4
+		lib\lib.vcxitems*{9f9f5a4a-5847-48db-a318-849830f8b16f}*SharedItemsImports = 9
 	EndGlobalSection
 EndGlobal

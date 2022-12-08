@@ -13,26 +13,8 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="include">
-      <UniqueIdentifier>{66977d52-e5b2-45ea-a6a4-47da64fbbaec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\iocplib">
-      <UniqueIdentifier>{7bff2c11-5035-4b1f-bc6d-536a4c920972}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\message">
+    <Filter Include="message">
       <UniqueIdentifier>{a722415f-216c-443c-a98f-8bbed6d23f20}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\flatbuffers">
-      <UniqueIdentifier>{a5edb760-b308-48ea-b97e-1a1fb26f4ba1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\iocplib\src">
-      <UniqueIdentifier>{f5c8a404-5614-400d-afc5-0cc1da2fa680}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\winsocklib">
-      <UniqueIdentifier>{360f1de1-4805-48f2-abce-c98d5050b1f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\winsocklib\src">
-      <UniqueIdentifier>{27c73c6e-4dda-4e5d-b756-1739f74d800b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -42,15 +24,6 @@
     <ClCompile Include="pch.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\include\iocplib\src\win_sock.cpp">
-      <Filter>include\iocplib\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\include\iocplib\src\socket_buffer.cpp">
-      <Filter>include\iocplib\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\include\iocplib\src\packet.cpp">
-      <Filter>include\iocplib\src</Filter>
-    </ClCompile>
     <ClCompile Include="client_session.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -59,125 +32,14 @@
     <ClInclude Include="pch.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\stl.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\iocplib\win_sock.h">
-      <Filter>include\iocplib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\allocator.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\array.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\base.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\bfbs_generator.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\buffer.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\buffer_ref.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\code_generators.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\default_allocator.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\detached_buffer.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\flatbuffer_builder.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\flatbuffers.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\flatc.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\flex_flat_util.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\flexbuffers.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\grpc.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\hash.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\idl.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\minireflect.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\reflection.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\reflection_generated.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\registry.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\stl_emulation.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\string.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\struct.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\table.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\util.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\vector.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\vector_downward.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\flatbuffers\verifier.h">
-      <Filter>include\flatbuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\winsocklib\socket_io_thread.h">
-      <Filter>include\winsocklib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\iocplib\socket_buffer.h">
-      <Filter>include\iocplib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\winsocklib\client_socket.h">
-      <Filter>include\winsocklib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\iocplib\packet.h">
-      <Filter>include\iocplib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\winsocklib\src\socket_io_thread.cpp">
-      <Filter>include\winsocklib\src</Filter>
-    </ClInclude>
     <ClInclude Include="client_session.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\winsocklib\src\client_socket.cpp">
-      <Filter>include\winsocklib\src</Filter>
+    <ClInclude Include="..\message\client_message_generated.h">
+      <Filter>message</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\message\client_message_generated.h">
-      <Filter>include\message</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\message\server_mesage_generated.h">
-      <Filter>include\message</Filter>
+    <ClInclude Include="..\message\server_mesage_generated.h">
+      <Filter>message</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
