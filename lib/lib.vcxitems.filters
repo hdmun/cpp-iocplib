@@ -54,14 +54,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)stl.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)winsocklib\winsocklib.vcxitems">
-      <Filter>winsocklib</Filter>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)winsocklib\winsocklib.vcxitems.filters">
-      <Filter>winsocklib</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\io_completion_port.cpp">
       <Filter>iocplib\src</Filter>
     </ClCompile>
