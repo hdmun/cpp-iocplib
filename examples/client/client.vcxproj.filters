@@ -42,13 +42,13 @@
     <ClCompile Include="pch.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\include\iocplib\src\win_sock.cpp">
+    <ClCompile Include="..\..\include\iocplib\src\win_sock.cpp">
       <Filter>include\iocplib\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\include\iocplib\src\socket_buffer.cpp">
+    <ClCompile Include="..\..\include\iocplib\src\socket_buffer.cpp">
       <Filter>include\iocplib\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\include\iocplib\src\packet.cpp">
+    <ClCompile Include="..\..\include\iocplib\src\packet.cpp">
       <Filter>include\iocplib\src</Filter>
     </ClCompile>
     <ClCompile Include="client_session.cpp">
@@ -59,124 +59,124 @@
     <ClInclude Include="pch.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\stl.h">
+    <ClInclude Include="..\..\include\stl.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\iocplib\win_sock.h">
+    <ClInclude Include="..\..\include\iocplib\win_sock.h">
       <Filter>include\iocplib</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\allocator.h">
+    <ClInclude Include="..\..\include\flatbuffers\allocator.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\array.h">
+    <ClInclude Include="..\..\include\flatbuffers\array.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\base.h">
+    <ClInclude Include="..\..\include\flatbuffers\base.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\bfbs_generator.h">
+    <ClInclude Include="..\..\include\flatbuffers\bfbs_generator.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\buffer.h">
+    <ClInclude Include="..\..\include\flatbuffers\buffer.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\buffer_ref.h">
+    <ClInclude Include="..\..\include\flatbuffers\buffer_ref.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\code_generators.h">
+    <ClInclude Include="..\..\include\flatbuffers\code_generators.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\default_allocator.h">
+    <ClInclude Include="..\..\include\flatbuffers\default_allocator.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\detached_buffer.h">
+    <ClInclude Include="..\..\include\flatbuffers\detached_buffer.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\flatbuffer_builder.h">
+    <ClInclude Include="..\..\include\flatbuffers\flatbuffer_builder.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\flatbuffers.h">
+    <ClInclude Include="..\..\include\flatbuffers\flatbuffers.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\flatc.h">
+    <ClInclude Include="..\..\include\flatbuffers\flatc.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\flex_flat_util.h">
+    <ClInclude Include="..\..\include\flatbuffers\flex_flat_util.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\flexbuffers.h">
+    <ClInclude Include="..\..\include\flatbuffers\flexbuffers.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\grpc.h">
+    <ClInclude Include="..\..\include\flatbuffers\grpc.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\hash.h">
+    <ClInclude Include="..\..\include\flatbuffers\hash.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\idl.h">
+    <ClInclude Include="..\..\include\flatbuffers\idl.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\minireflect.h">
+    <ClInclude Include="..\..\include\flatbuffers\minireflect.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\reflection.h">
+    <ClInclude Include="..\..\include\flatbuffers\reflection.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\reflection_generated.h">
+    <ClInclude Include="..\..\include\flatbuffers\reflection_generated.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\registry.h">
+    <ClInclude Include="..\..\include\flatbuffers\registry.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\stl_emulation.h">
+    <ClInclude Include="..\..\include\flatbuffers\stl_emulation.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\string.h">
+    <ClInclude Include="..\..\include\flatbuffers\string.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\struct.h">
+    <ClInclude Include="..\..\include\flatbuffers\struct.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\table.h">
+    <ClInclude Include="..\..\include\flatbuffers\table.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\util.h">
+    <ClInclude Include="..\..\include\flatbuffers\util.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\vector.h">
+    <ClInclude Include="..\..\include\flatbuffers\vector.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\vector_downward.h">
+    <ClInclude Include="..\..\include\flatbuffers\vector_downward.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\flatbuffers\verifier.h">
+    <ClInclude Include="..\..\include\flatbuffers\verifier.h">
       <Filter>include\flatbuffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\winsocklib\socket_io_thread.h">
+    <ClInclude Include="..\..\include\winsocklib\socket_io_thread.h">
       <Filter>include\winsocklib</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\iocplib\socket_buffer.h">
+    <ClInclude Include="..\..\include\iocplib\socket_buffer.h">
       <Filter>include\iocplib</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\winsocklib\client_socket.h">
+    <ClInclude Include="..\..\include\winsocklib\client_socket.h">
       <Filter>include\winsocklib</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\iocplib\packet.h">
+    <ClInclude Include="..\..\include\iocplib\packet.h">
       <Filter>include\iocplib</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\winsocklib\src\socket_io_thread.cpp">
+    <ClInclude Include="..\..\include\winsocklib\src\socket_io_thread.cpp">
       <Filter>include\winsocklib\src</Filter>
     </ClInclude>
     <ClInclude Include="client_session.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\winsocklib\src\client_socket.cpp">
+    <ClInclude Include="..\..\include\winsocklib\src\client_socket.cpp">
       <Filter>include\winsocklib\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\message\client_message_generated.h">
+    <ClInclude Include="..\..\include\message\client_message_generated.h">
       <Filter>include\message</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\message\server_mesage_generated.h">
+    <ClInclude Include="..\..\include\message\server_mesage_generated.h">
       <Filter>include\message</Filter>
     </ClInclude>
   </ItemGroup>

@@ -12,9 +12,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{80B1A206-3DEE-4FEE-8575-52B4C41679E0}</ProjectGuid>
+    <ProjectGuid>{0D8A15BE-2186-4E3C-B446-448ECEE8092F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>server</RootNamespace>
+    <RootNamespace>client</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -57,7 +57,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -75,7 +75,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -86,26 +86,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\iocplib\acceptor.h" />
-    <ClInclude Include="..\include\iocplib\io_completion_port.h" />
-    <ClInclude Include="..\include\iocplib\overlapped.h" />
-    <ClInclude Include="..\include\iocplib\packet.h" />
-    <ClInclude Include="..\include\iocplib\server_base.h" />
-    <ClInclude Include="..\include\iocplib\socket_buffer.h" />
-    <ClInclude Include="..\include\iocplib\socket_session.h" />
-    <ClInclude Include="..\include\iocplib\win_sock.h" />
-    <ClInclude Include="..\include\message\client_message_generated.h" />
-    <ClInclude Include="..\include\message\server_mesage_generated.h" />
-    <ClInclude Include="..\include\stl.h" />
-    <ClInclude Include="..\include\iocplib\src\acceptor.hpp" />
-    <ClCompile Include="..\include\iocplib\src\io_completion_port.cpp" />
-    <ClCompile Include="..\include\iocplib\src\packet.cpp" />
-    <ClInclude Include="..\include\iocplib\src\server_base.cpp" />
-    <ClCompile Include="..\include\iocplib\src\socket_buffer.cpp" />
-    <ClCompile Include="..\include\iocplib\src\socket_session.cpp" />
-    <ClCompile Include="..\include\iocplib\src\win_sock.cpp" />
+    <ClCompile Include="..\..\include\iocplib\src\packet.cpp" />
+    <ClCompile Include="..\..\include\iocplib\src\socket_buffer.cpp" />
+    <ClCompile Include="..\..\include\iocplib\src\win_sock.cpp" />
+    <ClInclude Include="..\..\include\message\client_message_generated.h" />
+    <ClInclude Include="..\..\include\message\server_mesage_generated.h" />
+    <ClInclude Include="..\..\include\winsocklib\src\client_socket.cpp" />
+    <ClInclude Include="..\..\include\winsocklib\src\socket_io_thread.cpp" />
+    <ClCompile Include="client.cpp" />
     <ClCompile Include="client_session.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -114,6 +103,41 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\include\flatbuffers\allocator.h" />
+    <ClInclude Include="..\..\include\flatbuffers\array.h" />
+    <ClInclude Include="..\..\include\flatbuffers\base.h" />
+    <ClInclude Include="..\..\include\flatbuffers\bfbs_generator.h" />
+    <ClInclude Include="..\..\include\flatbuffers\buffer.h" />
+    <ClInclude Include="..\..\include\flatbuffers\buffer_ref.h" />
+    <ClInclude Include="..\..\include\flatbuffers\code_generators.h" />
+    <ClInclude Include="..\..\include\flatbuffers\default_allocator.h" />
+    <ClInclude Include="..\..\include\flatbuffers\detached_buffer.h" />
+    <ClInclude Include="..\..\include\flatbuffers\flatbuffers.h" />
+    <ClInclude Include="..\..\include\flatbuffers\flatbuffer_builder.h" />
+    <ClInclude Include="..\..\include\flatbuffers\flatc.h" />
+    <ClInclude Include="..\..\include\flatbuffers\flexbuffers.h" />
+    <ClInclude Include="..\..\include\flatbuffers\flex_flat_util.h" />
+    <ClInclude Include="..\..\include\flatbuffers\grpc.h" />
+    <ClInclude Include="..\..\include\flatbuffers\hash.h" />
+    <ClInclude Include="..\..\include\flatbuffers\idl.h" />
+    <ClInclude Include="..\..\include\flatbuffers\minireflect.h" />
+    <ClInclude Include="..\..\include\flatbuffers\reflection.h" />
+    <ClInclude Include="..\..\include\flatbuffers\reflection_generated.h" />
+    <ClInclude Include="..\..\include\flatbuffers\registry.h" />
+    <ClInclude Include="..\..\include\flatbuffers\stl_emulation.h" />
+    <ClInclude Include="..\..\include\flatbuffers\string.h" />
+    <ClInclude Include="..\..\include\flatbuffers\struct.h" />
+    <ClInclude Include="..\..\include\flatbuffers\table.h" />
+    <ClInclude Include="..\..\include\flatbuffers\util.h" />
+    <ClInclude Include="..\..\include\flatbuffers\vector.h" />
+    <ClInclude Include="..\..\include\flatbuffers\vector_downward.h" />
+    <ClInclude Include="..\..\include\flatbuffers\verifier.h" />
+    <ClInclude Include="..\..\include\iocplib\packet.h" />
+    <ClInclude Include="..\..\include\iocplib\socket_buffer.h" />
+    <ClInclude Include="..\..\include\iocplib\win_sock.h" />
+    <ClInclude Include="..\..\include\stl.h" />
+    <ClInclude Include="..\..\include\winsocklib\client_socket.h" />
+    <ClInclude Include="..\..\include\winsocklib\socket_io_thread.h" />
     <ClInclude Include="client_session.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>

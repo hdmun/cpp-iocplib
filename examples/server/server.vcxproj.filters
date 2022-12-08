@@ -33,22 +33,22 @@
     <ClCompile Include="pch.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\include\iocplib\src\win_sock.cpp">
+    <ClCompile Include="..\..\include\iocplib\src\win_sock.cpp">
       <Filter>include\iocplib\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\include\iocplib\src\io_completion_port.cpp">
+    <ClCompile Include="..\..\include\iocplib\src\io_completion_port.cpp">
       <Filter>include\iocplib\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\include\iocplib\src\socket_session.cpp">
+    <ClCompile Include="..\..\include\iocplib\src\socket_session.cpp">
       <Filter>include\iocplib\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\include\iocplib\src\socket_buffer.cpp">
+    <ClCompile Include="..\..\include\iocplib\src\socket_buffer.cpp">
       <Filter>include\iocplib\src</Filter>
     </ClCompile>
     <ClCompile Include="client_session.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\include\iocplib\src\packet.cpp">
+    <ClCompile Include="..\..\include\iocplib\src\packet.cpp">
       <Filter>include\iocplib\src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,46 +56,46 @@
     <ClInclude Include="pch.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\stl.h">
+    <ClInclude Include="..\..\include\stl.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\iocplib\acceptor.h">
+    <ClInclude Include="..\..\include\iocplib\acceptor.h">
       <Filter>include\iocplib</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\iocplib\overlapped.h">
+    <ClInclude Include="..\..\include\iocplib\overlapped.h">
       <Filter>include\iocplib</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\iocplib\win_sock.h">
+    <ClInclude Include="..\..\include\iocplib\win_sock.h">
       <Filter>include\iocplib</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\iocplib\io_completion_port.h">
+    <ClInclude Include="..\..\include\iocplib\io_completion_port.h">
       <Filter>include\iocplib</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\iocplib\socket_session.h">
+    <ClInclude Include="..\..\include\iocplib\socket_session.h">
       <Filter>include\iocplib</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\iocplib\server_base.h">
+    <ClInclude Include="..\..\include\iocplib\server_base.h">
       <Filter>include\iocplib</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\iocplib\src\acceptor.hpp">
+    <ClInclude Include="..\..\include\iocplib\src\acceptor.hpp">
       <Filter>include\iocplib\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\iocplib\socket_buffer.h">
+    <ClInclude Include="..\..\include\iocplib\socket_buffer.h">
       <Filter>include\iocplib</Filter>
     </ClInclude>
     <ClInclude Include="client_session.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\iocplib\packet.h">
+    <ClInclude Include="..\..\include\iocplib\packet.h">
       <Filter>include\iocplib</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\message\client_message_generated.h">
+    <ClInclude Include="..\..\include\message\client_message_generated.h">
       <Filter>include\message</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\message\server_mesage_generated.h">
+    <ClInclude Include="..\..\include\message\server_mesage_generated.h">
       <Filter>include\message</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\iocplib\src\server_base.cpp">
+    <ClInclude Include="..\..\include\iocplib\src\server_base.cpp">
       <Filter>include\iocplib\src</Filter>
     </ClInclude>
   </ItemGroup>
