@@ -45,9 +45,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\io_completion_port.cpp">
-      <Filter>iocplib\src</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\packet.cpp">
       <Filter>iocplib\src</Filter>
     </ClCompile>
