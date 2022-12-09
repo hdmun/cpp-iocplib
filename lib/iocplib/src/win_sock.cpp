@@ -82,7 +82,7 @@ namespace iocplib {
 		if (received == SOCKET_ERROR) {
 			int err = ::WSAGetLastError();
 			if (err == WSAEWOULDBLOCK) {
-				return 0;
+				return -1;
 			}
 
 			// throw exception

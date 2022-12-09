@@ -49,15 +49,13 @@ namespace iocplib {
 				overlapped_context_.zero_byet_recv = false;
 				while (true) {
 					int received = session_->Recv(reinterpret_cast<char*>(buffer_), kSocketBufferSize, 0);
-					if (received == SOCKET_ERROR) {
-						int err = ::WSAGetLastError();
-						if (err != WSAEWOULDBLOCK) {
-							dwError = static_cast<DWORD>(err);
-						}
-						break;  // break while
+					if (received < 0) {
+						// WSAEWOULDBLOCK
+						break;
 					}
 
-					if (received <= 0) {
+					if (received == 0) {
+						// disconnect
 						break;
 					}
 

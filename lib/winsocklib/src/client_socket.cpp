@@ -38,7 +38,7 @@ namespace winsocklib {
 			uint8_t* buffer = recv_buffer_ + recv_offset_;
 			int buffer_len = iocplib::kSocketBufferSize - recv_offset_;
 			int received = socket_.Recv(reinterpret_cast<char*>(buffer), buffer_len, 0);
-			if (received < 0) {
+			if (received <= 0) {
 				break;
 			}
 
