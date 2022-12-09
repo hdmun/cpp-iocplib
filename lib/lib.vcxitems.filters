@@ -46,7 +46,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\win_sock.h">
       <Filter>winsocklib</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\src\server_base.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\io_completion_port.cpp">

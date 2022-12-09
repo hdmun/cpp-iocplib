@@ -30,7 +30,6 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\io_completion_port.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\packet.cpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\src\server_base.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\socket_buffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\socket_session.cpp" />
   </ItemGroup>
