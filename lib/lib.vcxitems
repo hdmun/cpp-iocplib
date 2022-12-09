@@ -21,7 +21,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\server_base.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\socket_buffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\socket_session.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\src\acceptor.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\win_sock.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)stl.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\client_socket.h" />

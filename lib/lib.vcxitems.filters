@@ -33,9 +33,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\socket_session.h">
       <Filter>iocplib</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\src\acceptor.hpp">
-      <Filter>iocplib\src</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\client_socket.h">
       <Filter>winsocklib</Filter>
     </ClInclude>
