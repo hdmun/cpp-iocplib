@@ -1,6 +1,6 @@
 #ifndef __SOCK_SESSION_H__
 #define __SOCK_SESSION_H__
-#include "win_sock.h"
+#include "../winsocklib/win_sock.h"
 #include "overlapped.h"
 
 namespace iocplib {
@@ -24,7 +24,7 @@ namespace iocplib {
 		SocketSession* session_;
 		OverlappedContext overlapped_context_;
 
-		uint8_t buffer_[kSocketBufferSize];
+		uint8_t buffer_[winsocklib::kSocketBufferSize];
 	};
 
 	class SessionSender
@@ -56,7 +56,7 @@ namespace iocplib {
 	};
 
 	class SocketSession
-		: public WinSock
+		: public winsocklib::WinSock
 		, public OverlappedEventInterface
 	{
 	protected:

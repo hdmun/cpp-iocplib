@@ -5,7 +5,7 @@
 
 int main()
 {
-    iocplib::WinSockInitializer initializer;
+    winsocklib::WinSockInitializer initializer;
 
     SOCKADDR_IN addr_in = { 0, };
     addr_in.sin_family = AF_INET;

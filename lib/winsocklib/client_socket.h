@@ -1,7 +1,7 @@
 #ifndef __WINSOCKLIB_CLIENT_SOCKET_H__
 #define __WINSOCKLIB_CLIENT_SOCKET_H__
 
-#include "iocplib/win_sock.h"
+#include "winsocklib/win_sock.h"
 #include "iocplib/packet.h"
 #include "iocplib/socket_buffer.h"
 #include "socket_io_thread.h"
@@ -31,11 +31,11 @@ namespace winsocklib {
 		void TrySendPacket();
 
 	private:
-		iocplib::WinSock socket_;
+		winsocklib::WinSock socket_;
 		SocketIoThread<ClientSocket<_Session> > io_thread_;
 
 		// recv
-		uint8_t recv_buffer_[iocplib::kSocketBufferSize]{ 0, };
+		uint8_t recv_buffer_[winsocklib::kSocketBufferSize]{ 0, };
 		uint32_t recv_offset_{ 0 };
 		iocplib::PacketReceiver packet_receiver_;
 

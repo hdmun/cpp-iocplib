@@ -2,7 +2,7 @@
 #include "../win_sock.h"
 
 
-namespace iocplib {
+namespace winsocklib {
 
 	WinSock::WinSock()
 		: handle_( INVALID_SOCKET )

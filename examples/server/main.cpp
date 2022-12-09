@@ -2,10 +2,10 @@
 #include <csignal>
 
 #include "iocplib/server_base.h"
-#include "iocplib/win_sock.h"
+#include "winsocklib/win_sock.h"
 #include "client_session.h"
 
-static iocplib::WinSockInitializer g_winsock_init;
+static winsocklib::WinSockInitializer g_winsock_init;
 static bool g_running = true;
 
 static void SignalHandler(int signo)

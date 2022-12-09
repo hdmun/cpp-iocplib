@@ -7,7 +7,7 @@
 #include <MSWSock.h>
 #pragma comment(lib, "mswsock.lib")
 
-namespace iocplib {
+namespace winsocklib {
 
 	enum {
 		kSocketBufferSize = 1460,

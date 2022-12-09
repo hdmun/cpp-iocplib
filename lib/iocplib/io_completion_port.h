@@ -1,6 +1,6 @@
 #ifndef __IO_COMPLETION_PORT_H__
 #define __IO_COMPLETION_PORT_H__
-#include "win_sock.h"
+#include "../winsocklib/win_sock.h"
 
 namespace iocplib {
 	class IoCompletionPortWorker

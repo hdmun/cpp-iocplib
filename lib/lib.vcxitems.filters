@@ -36,9 +36,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\socket_session.h">
       <Filter>iocplib</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\win_sock.h">
-      <Filter>iocplib</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\src\acceptor.hpp">
       <Filter>iocplib\src</Filter>
     </ClInclude>
@@ -52,6 +49,11 @@
       <Filter>winsocklib\src</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)stl.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\win_sock.h">
+      <Filter>winsocklib</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\src\server_base.cpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\src\socket_io_thread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\io_completion_port.cpp">
@@ -60,19 +62,13 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\packet.cpp">
       <Filter>iocplib\src</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\server_base.cpp">
-      <Filter>iocplib\src</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\socket_buffer.cpp">
       <Filter>iocplib\src</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\socket_session.cpp">
       <Filter>iocplib\src</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\win_sock.cpp">
-      <Filter>iocplib\src</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)winsocklib\src\socket_io_thread.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)winsocklib\src\win_sock.cpp">
       <Filter>winsocklib\src</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,6 +1,6 @@
 #ifndef __ACCEPTOR_H__
 #define __ACCEPTOR_H__
-#include "win_sock.h"
+#include "../winsocklib/win_sock.h"
 #include "overlapped.h"
 
 namespace iocplib {
@@ -47,7 +47,7 @@ namespace iocplib {
 
 	private:
 		std::unique_ptr< IoCompletionPort > io_completion_port_;
-		WinSock listen_socket_;
+		winsocklib::WinSock listen_socket_;
 
 		std::vector< std::unique_ptr<AcceptSocket<_Socket> > > accept_sockets_;
 

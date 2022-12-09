@@ -48,7 +48,7 @@ namespace iocplib {
 			if (overlapped_context_.zero_byet_recv) {
 				overlapped_context_.zero_byet_recv = false;
 				while (true) {
-					int received = session_->Recv(reinterpret_cast<char*>(buffer_), kSocketBufferSize, 0);
+					int received = session_->Recv(reinterpret_cast<char*>(buffer_), winsocklib::kSocketBufferSize, 0);
 					if (received < 0) {
 						// WSAEWOULDBLOCK
 						break;
@@ -188,7 +188,7 @@ namespace iocplib {
 
 	void SocketSession::OnAccept(IoCompletionPort* iocp)
 	{
-		WinSock::SetNonBlocking(true);
+		winsocklib::WinSock::SetNonBlocking(true);
 
 		iocp_ = iocp;
 		iocp_->Attach(reinterpret_cast<HANDLE>(handle()));
