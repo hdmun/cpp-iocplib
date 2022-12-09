@@ -33,6 +33,5 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\src\server_base.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\socket_buffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\socket_session.cpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\src\socket_io_thread.cpp" />
   </ItemGroup>
 </Project>
