@@ -68,8 +68,5 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\socket_session.cpp">
       <Filter>iocplib\src</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)winsocklib\src\win_sock.cpp">
-      <Filter>winsocklib\src</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
