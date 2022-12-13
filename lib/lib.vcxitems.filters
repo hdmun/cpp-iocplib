@@ -10,9 +10,6 @@
     <Filter Include="iocplib\src">
       <UniqueIdentifier>{fde9b37d-5293-4bbf-ab57-06eae1d4f664}</UniqueIdentifier>
     </Filter>
-    <Filter Include="winsocklib\src">
-      <UniqueIdentifier>{9ef42977-28f8-4f0d-af1d-19a6d5b253b4}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\acceptor.h">
@@ -36,40 +33,20 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\socket_session.h">
       <Filter>iocplib</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\src\acceptor.hpp">
-      <Filter>iocplib\src</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\client_socket.h">
       <Filter>winsocklib</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\socket_io_thread.h">
       <Filter>winsocklib</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\src\client_socket.cpp">
-      <Filter>winsocklib\src</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)stl.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\win_sock.h">
       <Filter>winsocklib</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)iocplib\src\server_base.cpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\src\socket_io_thread.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\io_completion_port.cpp">
-      <Filter>iocplib\src</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\packet.cpp">
-      <Filter>iocplib\src</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\socket_buffer.cpp">
-      <Filter>iocplib\src</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\socket_session.cpp">
       <Filter>iocplib\src</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)winsocklib\src\win_sock.cpp">
-      <Filter>winsocklib\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
