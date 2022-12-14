@@ -38,14 +38,16 @@ namespace iocplib {
 
 		void SendAsync(uint8_t* data, uint32_t size);
 
-		int BeginSend();
 		void OnSend(DWORD dwError, DWORD dwBytesTransferred);
 
 	private:
+		int BeginSend();
 		void PostCompletionPortSignal(HANDLE iocp_handle);
 
 	private:
 		SocketSession* session_;
+
+		std::recursive_mutex lock_;
 		OverlappedContext overlapped_context_;
 
 		bool post_send_signal{ false };

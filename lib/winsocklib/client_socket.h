@@ -1,10 +1,10 @@
 #ifndef __WINSOCKLIB_CLIENT_SOCKET_H__
 #define __WINSOCKLIB_CLIENT_SOCKET_H__
 
-#include "winsocklib/win_sock.h"
-#include "iocplib/packet.h"
-#include "iocplib/socket_buffer.h"
+#include "win_sock.h"
 #include "socket_io_thread.h"
+#include "../iocplib/packet.h"
+#include "../iocplib/socket_buffer.h"
 
 namespace winsocklib {
 	template<typename _Session>
@@ -39,6 +39,7 @@ namespace winsocklib {
 
 		// for SocketIoThreadCallback
 		const SOCKET GetSocketHandle() { return socket_.handle(); }
+
 		void OnSocketRead(int error)
 		{
 			if (error > 0) {
@@ -81,7 +82,10 @@ namespace winsocklib {
 
 		void SendPacket(uint8_t* data, uint32_t size)
 		{
-			send_buffers_.push_back(iocplib::SocketBuffer::Allocate(data, size));
+			/* synchroized(send_lock_) */ {
+				std::lock_guard<std::mutex> lock(send_lock_);
+				send_buffers_.push_back(iocplib::SocketBuffer::Allocate(data, size));
+			}
 
 			TrySendPacket();
 		}
@@ -89,6 +93,8 @@ namespace winsocklib {
 	private:
 		void TrySendPacket()
 		{
+			std::lock_guard<std::mutex> lock(send_lock_);
+
 			while (!send_buffers_.empty()) {
 				const auto& front = send_buffers_.front();
 
