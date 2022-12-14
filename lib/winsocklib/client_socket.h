@@ -58,7 +58,7 @@ namespace winsocklib {
 					remain_length = packet_receiver_.OnReceive(buffer, received);
 					if (packet_receiver_.IsComplete()) {
 						// on packet
-						reinterpret_cast<_Session*>(this)->OnPacket(packet_receiver_.buffer());
+						reinterpret_cast<_Session*>(this)->OnPacket(packet_receiver_.buffer(), packet_receiver_.length());
 						packet_receiver_.Clear();
 					}
 				} while (remain_length > 0);

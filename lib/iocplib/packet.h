@@ -64,6 +64,11 @@ namespace iocplib {
 			return buffer_.data() + kPacketLengthSize;
 		}
 
+		uint32_t length() const
+		{
+			return length_;
+		}
+
 	private:
 		void Append(uint8_t* buffer, uint32_t append)
 		{

@@ -13,9 +13,15 @@ ClientSession::ClientSession()
 {
 }
 
-void ClientSession::OnPacket(const uint8_t* buffer)
+void ClientSession::OnPacket(const uint8_t* buffer, uint32_t length)
 {
 	using msg = message::server::PacketType;
+
+	flatbuffers::Verifier verifier(buffer, length);
+	if (!message::server::VerifyPacketBuffer(verifier)) {
+		// invalid packet
+		return;
+	}
 
 	const auto* packet = message::server::GetPacket(buffer);
 	switch (packet->type_type())

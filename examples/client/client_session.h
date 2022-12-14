@@ -17,7 +17,7 @@ public:
 	ClientSession();
 	virtual ~ClientSession() {}
 
-	void OnPacket(const uint8_t* buffer);
+	void OnPacket(const uint8_t* buffer, uint32_t length);
 
 	void SendLoginRequest(std::string id, std::string password);
 	void _LoginResult(const message::server::LoginResult* result);
