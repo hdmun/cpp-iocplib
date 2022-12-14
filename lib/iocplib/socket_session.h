@@ -22,6 +22,8 @@ namespace iocplib {
 
 	private:
 		SocketSession* session_;
+
+		std::recursive_mutex lock_;
 		OverlappedContext overlapped_context_;
 
 		uint8_t buffer_[winsocklib::kSocketBufferSize];

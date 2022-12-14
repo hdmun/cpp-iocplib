@@ -19,6 +19,8 @@ namespace iocplib {
 
 	int SessionReceiver::BeginReceive()
 	{
+		std::lock_guard<std::recursive_mutex> lock(lock_);
+
 		WSABUF buf;
 		buf.buf = nullptr;
 		buf.len = 0;
@@ -44,6 +46,8 @@ namespace iocplib {
 			if (dwError) {
 				break;
 			}
+
+			std::lock_guard<std::recursive_mutex> lock(lock_);
 
 			if (overlapped_context_.zero_byet_recv) {
 				overlapped_context_.zero_byet_recv = false;
