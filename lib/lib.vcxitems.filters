@@ -43,6 +43,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)winsocklib\win_sock.h">
       <Filter>winsocklib</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)exceptions.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)iocplib\src\socket_session.cpp">

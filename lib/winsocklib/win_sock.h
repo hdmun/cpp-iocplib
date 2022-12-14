@@ -29,8 +29,8 @@ namespace winsocklib {
 		{
 			handle_ = ::socket(af, type, protocol);
 			if (handle_ == INVALID_SOCKET) {
-				std::string msg = "failed create socket, " + std::to_string(::WSAGetLastError());
-				throw std::exception(msg.c_str());
+				assert(false);
+				throw WinSockException("failed to create socket", ::WSAGetLastError());
 			}
 		}
 
@@ -38,8 +38,8 @@ namespace winsocklib {
 		{
 			int bind_ = ::bind(handle_, pAddr, len);
 			if (bind_ == SOCKET_ERROR) {
-				std::string msg = "failed bind socket, " + std::to_string(::WSAGetLastError());
-				throw std::exception(msg.c_str());
+				assert(false);
+				throw WinSockException("failed to bind socket", ::WSAGetLastError());
 			}
 		}
 
@@ -47,8 +47,8 @@ namespace winsocklib {
 		{
 			int bind_ = ::listen(handle_, backlog);
 			if (bind_ == SOCKET_ERROR) {
-				std::string msg = "failed listen socket, " + std::to_string(::WSAGetLastError());
-				throw std::exception(msg.c_str());
+				assert(false);
+				throw WinSockException("failed to listen socket", ::WSAGetLastError());
 			}
 		}
 
@@ -58,6 +58,8 @@ namespace winsocklib {
 			if (ret != SOCKET_ERROR || ::WSAGetLastError() == WSAEWOULDBLOCK) {
 				return true;
 			}
+
+			assert(false && "failed to connect socket");
 			return false;
 		}
 
@@ -66,7 +68,7 @@ namespace winsocklib {
 			if (handle_ != INVALID_SOCKET) {
 				int ret = ::closesocket(handle_);
 				if (ret == SOCKET_ERROR) {
-					// hmm...
+					assert(false && "failed to close socket");
 				}
 
 				handle_ = INVALID_SOCKET;
@@ -82,7 +84,7 @@ namespace winsocklib {
 					return 0;
 				}
 
-				// throw exception
+				throw WinSockException("failed to send socket", err);
 			}
 
 			return sended;
@@ -97,7 +99,7 @@ namespace winsocklib {
 					return -1;
 				}
 
-				// throw exception
+				throw WinSockException("failed to recv socket", err);
 			}
 
 			return received;
@@ -109,8 +111,7 @@ namespace winsocklib {
 				reinterpret_cast<const char*>(&listen_socket), sizeof(listen_socket)
 			);
 			if (ret == SOCKET_ERROR) {
-				std::string msg = "failed update accept socket, " + std::to_string(::WSAGetLastError());
-				throw std::exception(msg.c_str());
+				throw WinSockException("failed to update accept socket", ::WSAGetLastError());
 			}
 		}
 
@@ -119,8 +120,7 @@ namespace winsocklib {
 			u_long b = nonblocking ? 1UL : 0UL;
 			int ret = ::ioctlsocket(handle_, FIONBIO, &b);
 			if (ret == SOCKET_ERROR) {
-				std::string msg = "failed set non blocking socket, " + std::to_string(::WSAGetLastError());
-				throw std::exception(msg.c_str());
+				throw WinSockException("failed set non blocking socket", ::WSAGetLastError());
 			}
 		}
 
@@ -130,8 +130,7 @@ namespace winsocklib {
 			int ret = ::setsockopt(handle_, SOL_SOCKET, SO_RCVBUF,
 				reinterpret_cast<const char*>(&n), sizeof(n));
 			if (ret == SOCKET_ERROR) {
-				std::string msg = "failed set receive buffer size socket, " + std::to_string(::WSAGetLastError());
-				throw std::exception(msg.c_str());
+				throw WinSockException("failed to set receive buffer size socket", ::WSAGetLastError());
 			}
 		}
 
@@ -141,8 +140,7 @@ namespace winsocklib {
 			int ret = ::setsockopt(handle_, SOL_SOCKET, SO_SNDBUF,
 				reinterpret_cast<const char*>(&n), sizeof(n));
 			if (ret == SOCKET_ERROR) {
-				std::string msg = "failed set send buffer size socket, " + std::to_string(::WSAGetLastError());
-				throw std::exception(msg.c_str());
+				throw WinSockException("failed to set send buffer size socket", ::WSAGetLastError());
 			}
 		}
 
@@ -160,7 +158,7 @@ namespace winsocklib {
 			WSADATA wsadata = { 0, };
 			int ret = ::WSAStartup( MAKEWORD( 2, 0 ), &wsadata );
 			if ( ret != 0 || LOBYTE( wsadata.wVersion ) != 2 ) {
-				std::cout << "failed WSAStartup" << std::endl;
+				throw WinSockException("failed to WSAStartup", ::WSAGetLastError());
 			}
 		}
 
@@ -168,7 +166,7 @@ namespace winsocklib {
 		{
 			int ret = ::WSACleanup();
 			if ( ret != 0 ) {
-				std::cout << "failed WSACleanup" << std::endl;
+				// throw WinSockException("failed to WSACleanup", ::WSAGetLastError());
 			}
 		}
 	};
