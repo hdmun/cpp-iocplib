@@ -94,6 +94,8 @@ namespace iocplib {
 
 	void SessionSender::SendAsync(uint8_t* data, uint32_t size)
 	{
+		std::lock_guard<std::recursive_mutex> lock(lock_);
+
 		// send_queue_에 버퍼 데이터를 생성하고
 		send_queue_.push(SocketBuffer::Allocate(data, size));
 
