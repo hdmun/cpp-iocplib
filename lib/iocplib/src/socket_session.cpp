@@ -133,33 +133,51 @@ namespace iocplib {
 
 	void SessionSender::OnSend(DWORD dwError, DWORD dwBytesTransferred)
 	{
-		if (dwError > 0) {
-			return;
-		}
-
 		std::lock_guard<std::recursive_mutex> lock(lock_);
 
-		// 전송된 만큼 sending_packets_ 정리
-		dwBytesTransferred += sending_offset_;
-		sending_offset_ = 0;
+		if (dwError == ERROR_SUCCESS) {
+			// 전송된 만큼 sending_packets_ 버퍼 정리
+			dwBytesTransferred += sending_offset_;
+			sending_offset_ = 0;
 
-		while (dwBytesTransferred && !sending_packets_.empty()) {
-			const auto& sending = sending_packets_.front();
-			if (dwBytesTransferred >= sending->GetBufferSize()) {
-				dwBytesTransferred -= sending->GetBufferSize();
-				sending_packets_.pop_front();
-			}
-			else {
-				sending_offset_ = dwBytesTransferred;
-				break;
+			while (dwBytesTransferred && !sending_packets_.empty()) {
+				const auto& sending = sending_packets_.front();
+				if (dwBytesTransferred >= sending->GetBufferSize()) {
+					dwBytesTransferred -= sending->GetBufferSize();
+					sending_packets_.pop_front();
+				}
+				else {
+					sending_offset_ = dwBytesTransferred;
+					break;
+				}
 			}
 		}
 
-		// send_queue_ 전송 시 wsabuf_도
-		BeginSend();
+		// 전송 시도
+		dwError = BeginSend();
+		switch (dwError) {
+		case ERROR_SUCCESS:
+			break;
+
+		case ERROR_OPERATION_ABORTED:
+		case ERROR_NO_SYSTEM_RESOURCES:
+		case WSAENOBUFS:
+			dwError = BeginSend(); // 한 번 더 다시 시도
+			break;
+
+		default:
+			break;
+		}
+
+		if (dwError) {
+			send_error_ = dwError;
+			post_send_signal = false;
+
+			// todo: 에러 전파
+		}
 	}
 
-	int SessionSender::BeginSend()
+	int32_t SessionSender::BeginSend()
 	{
 		std::lock_guard<std::recursive_mutex> lock(lock_);
 
@@ -194,7 +212,7 @@ namespace iocplib {
 		if (ret == SOCKET_ERROR) {
 			int err = ::WSAGetLastError();
 			if (err != WSA_IO_PENDING) {
-				
+				// todo: 실패 했으니 버퍼 원상 복구
 				return err;
 			}
 		}
@@ -204,6 +222,8 @@ namespace iocplib {
 
 	void SessionSender::PostCompletionPortSignal(HANDLE iocp_handle)
 	{
+		std::lock_guard<std::recursive_mutex> lock(lock_);
+
 		if (!post_send_signal) {
 			if (!::PostQueuedCompletionStatus(iocp_handle, 0, 0, &overlapped_context_)) {
 				// GetLastError();

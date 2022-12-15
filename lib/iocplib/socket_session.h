@@ -48,7 +48,7 @@ namespace iocplib {
 		void OnSend(DWORD dwError, DWORD dwBytesTransferred);
 
 	private:
-		int BeginSend();
+		int32_t BeginSend();
 		void PostCompletionPortSignal(HANDLE iocp_handle);
 
 	private:
@@ -62,6 +62,8 @@ namespace iocplib {
 
 		std::list<std::unique_ptr<SocketBuffer> > sending_packets_;
 		std::uint32_t sending_offset_{ 0 };
+
+		uint32_t send_error_{ 0U };
 	};
 
 	class SocketSession
