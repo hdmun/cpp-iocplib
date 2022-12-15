@@ -80,7 +80,7 @@ namespace iocplib {
 		void OnAccept(IoCompletionPort* iocp);
 		virtual void OnReceivePacket(uint8_t* buffer, uint32_t received) {}
 
-		virtual void OnComplete(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey) override;
+		virtual void OnCompleteOverlappedIO(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey) override;
 
 		void SendAsync(uint8_t* data, uint32_t size) {
 			sender_.SendAsync(data, size);

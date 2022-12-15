@@ -122,7 +122,7 @@ namespace iocplib {
 			listen_socket_.Close();
 		}
 
-		virtual void OnComplete(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey)
+		virtual void OnCompleteOverlappedIO(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey)
 		{
 			AcceptSocket<_Socket>* accept_socket = reinterpret_cast<AcceptSocket<_Socket>*>(data.obj);
 

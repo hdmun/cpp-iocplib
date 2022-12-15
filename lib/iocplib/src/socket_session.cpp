@@ -257,7 +257,7 @@ namespace iocplib {
 		uint32_t error = receiver_.BeginReceive();
 	}
 
-	void SocketSession::OnComplete(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey)
+	void SocketSession::OnCompleteOverlappedIO(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey)
 	{
 		switch (data.type) {
 		case eOverlappedType::Recv:

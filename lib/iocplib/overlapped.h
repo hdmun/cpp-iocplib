@@ -29,7 +29,7 @@ namespace iocplib {
 
     struct OverlappedEventInterface
     {
-        virtual void OnComplete(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey) = 0;
+        virtual void OnCompleteOverlappedIO(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey) = 0;
     };
 
 }
