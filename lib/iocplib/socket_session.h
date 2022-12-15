@@ -14,11 +14,14 @@ namespace iocplib {
 		SessionReceiver(SocketSession* session);
 		virtual ~SessionReceiver();
 
-		int BeginReceive();
+		int32_t BeginReceive();
 		void OnReceive(DWORD dwError, DWORD dwBytesTransferred);
 
 		SessionReceiver(const SessionReceiver&) = delete;
 		SessionReceiver operator=(const SessionReceiver&) = delete;
+
+	private:
+		int32_t OnError(DWORD dwError);
 
 	private:
 		SocketSession* session_;
@@ -26,6 +29,7 @@ namespace iocplib {
 		std::recursive_mutex lock_;
 		OverlappedContext overlapped_context_;
 		bool zero_byet_recv_{ false };
+		uint32_t recv_error_{ 0U };
 
 		uint8_t buffer_[winsocklib::kSocketBufferSize];
 	};

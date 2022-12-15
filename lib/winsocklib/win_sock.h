@@ -90,6 +90,11 @@ namespace winsocklib {
 			return sended;
 		}
 
+		int TryRecv(char* buffer, int len, int flag) noexcept
+		{
+			return ::recv(handle_, buffer, len, flag);
+		}
+
 		int Recv(char* buffer, int len, int flag)
 		{
 			int received = ::recv(handle_, buffer, len, flag);

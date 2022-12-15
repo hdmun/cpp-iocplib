@@ -18,7 +18,7 @@ namespace iocplib {
 		session_ = nullptr;
 	}
 
-	int SessionReceiver::BeginReceive()
+	int32_t SessionReceiver::BeginReceive()
 	{
 		std::lock_guard<std::recursive_mutex> lock(lock_);
 
@@ -30,7 +30,7 @@ namespace iocplib {
 
 		DWORD dwReceived = 0;
 		DWORD dwFlags = 0;
-		int err = ::WSARecv(session_->handle(), &buf, 1UL, &dwReceived, &dwFlags, &overlapped_context_, nullptr);
+		int32_t err = ::WSARecv(session_->handle(), &buf, 1UL, &dwReceived, &dwFlags, &overlapped_context_, nullptr);
 		if (err == SOCKET_ERROR) {
 			err = ::WSAGetLastError();
 			if (err != WSA_IO_PENDING) {
@@ -44,40 +44,68 @@ namespace iocplib {
 	void SessionReceiver::OnReceive(DWORD dwError, DWORD dwBytesTransferred)
 	{
 		do {
+			// 에러 체크
 			if (dwError) {
-				break;
+				dwError = OnError(dwError);
+				break;  // break do-while
 			}
 
 			std::lock_guard<std::recursive_mutex> lock(lock_);
 
 			if (zero_byet_recv_) {
 				zero_byet_recv_ = false;
+
+				// `WSAEWOULDBLOCK` 리턴 될 때 까지 recv 시도
 				while (true) {
-					int received = session_->Recv(reinterpret_cast<char*>(buffer_), winsocklib::kSocketBufferSize, 0);
-					if (received < 0) {
-						// WSAEWOULDBLOCK
+					int received = session_->TryRecv(reinterpret_cast<char*>(buffer_), winsocklib::kSocketBufferSize, 0);
+					if (received == SOCKET_ERROR) {
+						int err = ::WSAGetLastError();
+						if (err == WSAEWOULDBLOCK) {
+							break;
+						}
+
+						dwError = err;
 						break;
 					}
 
 					if (received == 0) {
-						// disconnect
+						recv_error_ = WSAECONNRESET; // disconnect
 						break;
 					}
 
 					session_->OnReceivePacket(buffer_, received);
 				}
-				break;  // break do-while
-			}
 
-			if (dwBytesTransferred == 0) {
-				__noop;
+				if (dwError == ERROR_SUCCESS) {
+					dwError = BeginReceive();
+				}
+
+				if (dwError) {
+					dwError = OnError(dwError);
+				}
 			}
 		} while (false);
 
-		// dwError
+		if (dwError) {
+			// 수신 실패 에러 처리
+		}
+	}
 
+	int32_t SessionReceiver::OnError(DWORD dwError)
+	{
+		switch (dwError) {
+		case ERROR_SUCCESS:
+			break;
 
-		BeginReceive();
+		case ERROR_OPERATION_ABORTED:
+		case ERROR_NO_SYSTEM_RESOURCES:
+		case WSAENOBUFS:
+			return BeginReceive(); // 한 번 더 다시 시도
+
+		default:
+			recv_error_ = dwError;
+			return dwError;
+		}
 	}
 
 	SessionSender::SessionSender(SocketSession* session)
@@ -206,7 +234,7 @@ namespace iocplib {
 
 		// todo: nagle option 끄기
 
-		receiver_.BeginReceive();
+		uint32_t error = receiver_.BeginReceive();
 	}
 
 	void SocketSession::OnComplete(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey)
