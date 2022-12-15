@@ -25,6 +25,7 @@ namespace iocplib {
 
 		std::recursive_mutex lock_;
 		OverlappedContext overlapped_context_;
+		bool zero_byet_recv_{ false };
 
 		uint8_t buffer_[winsocklib::kSocketBufferSize];
 	};

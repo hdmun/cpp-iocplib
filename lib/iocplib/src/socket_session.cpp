@@ -7,6 +7,7 @@
 namespace iocplib {
 	SessionReceiver::SessionReceiver(SocketSession* session)
 		: session_(session)
+		, zero_byet_recv_(false)
 	{
 		overlapped_context_.data.type = eOverlappedType::Recv;
 		overlapped_context_.callback = session_;
@@ -25,7 +26,7 @@ namespace iocplib {
 		buf.buf = nullptr;
 		buf.len = 0;
 
-		overlapped_context_.zero_byet_recv = true;
+		zero_byet_recv_ = true;
 
 		DWORD dwReceived = 0;
 		DWORD dwFlags = 0;
@@ -49,8 +50,8 @@ namespace iocplib {
 
 			std::lock_guard<std::recursive_mutex> lock(lock_);
 
-			if (overlapped_context_.zero_byet_recv) {
-				overlapped_context_.zero_byet_recv = false;
+			if (zero_byet_recv_) {
+				zero_byet_recv_ = false;
 				while (true) {
 					int received = session_->Recv(reinterpret_cast<char*>(buffer_), winsocklib::kSocketBufferSize, 0);
 					if (received < 0) {

@@ -24,8 +24,6 @@ namespace iocplib {
         } Data;
 
         Data data;
-        bool zero_byet_recv{ false };
-
         OverlappedEventInterface* callback{ nullptr };
     };
 
