@@ -261,11 +261,10 @@ namespace iocplib {
 	void SocketSession::OnAccept(IoCompletionPort* iocp)
 	{
 		winsocklib::WinSock::SetNonBlocking(true);
+		winsocklib::WinSock::SetNagleAlogrithm(false);
 
 		iocp_ = iocp;
 		iocp_->Attach(reinterpret_cast<HANDLE>(handle()));
-
-		// todo: nagle option ²ô±â
 
 		receiver_.OnAccept(weak_from_this());
 		sender_.OnAccept(weak_from_this());

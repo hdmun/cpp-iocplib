@@ -129,6 +129,17 @@ namespace winsocklib {
 			}
 		}
 
+		void SetNagleAlogrithm(bool activate)
+		{
+			int optval = activate;
+			int ret = ::setsockopt(handle_, IPPROTO_TCP, TCP_NODELAY,
+				reinterpret_cast<const char*>(&optval), sizeof(optval)
+			);
+			if (ret == SOCKET_ERROR) {
+				throw WinSockException("failed to set nagle alogrithm", ::WSAGetLastError());
+			}
+		}
+
 		void SetRecvBufferSize(uint32_t size)
 		{
 			int n = size;
