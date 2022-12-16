@@ -5,17 +5,21 @@
 #include "../socket_buffer.h"
 
 namespace iocplib {
-	SessionReceiver::SessionReceiver(SocketSession* session)
-		: session_(session)
-		, zero_byet_recv_(false)
+	SessionReceiver::SessionReceiver()
+		: zero_byet_recv_(false)
 	{
 		overlapped_context_.data.type = eOverlappedType::Recv;
-		overlapped_context_.callback = session_;
 	}
 
 	SessionReceiver::~SessionReceiver()
 	{
-		session_ = nullptr;
+		session_.reset();
+	}
+
+	void SessionReceiver::OnAccept(std::weak_ptr<SocketSession> session)
+	{
+		session_ = session;
+		overlapped_context_.callback = session;
 	}
 
 	int32_t SessionReceiver::BeginReceive()
@@ -30,7 +34,7 @@ namespace iocplib {
 
 		DWORD dwReceived = 0;
 		DWORD dwFlags = 0;
-		int32_t err = ::WSARecv(session_->handle(), &buf, 1UL, &dwReceived, &dwFlags, &overlapped_context_, nullptr);
+		int32_t err = ::WSARecv(session_.lock()->handle(), &buf, 1UL, &dwReceived, &dwFlags, &overlapped_context_, nullptr);
 		if (err == SOCKET_ERROR) {
 			err = ::WSAGetLastError();
 			if (err != WSA_IO_PENDING) {
@@ -56,8 +60,9 @@ namespace iocplib {
 				zero_byet_recv_ = false;
 
 				// `WSAEWOULDBLOCK` 리턴 될 때 까지 recv 시도
+				auto session = session_.lock();
 				while (true) {
-					int received = session_->TryRecv(reinterpret_cast<char*>(buffer_), winsocklib::kSocketBufferSize, 0);
+					int received = session->TryRecv(reinterpret_cast<char*>(buffer_), winsocklib::kSocketBufferSize, 0);
 					if (received == SOCKET_ERROR) {
 						int err = ::WSAGetLastError();
 						if (err == WSAEWOULDBLOCK) {
@@ -73,7 +78,7 @@ namespace iocplib {
 						break;
 					}
 
-					session_->OnReceivePacket(buffer_, received);
+					session->OnReceivePacket(buffer_, received);
 				}
 
 				if (dwError == ERROR_SUCCESS) {
@@ -109,27 +114,36 @@ namespace iocplib {
 		return dwError;
 	}
 
-	SessionSender::SessionSender(SocketSession* session)
-		: session_(session)
+	SessionSender::SessionSender()
 	{
 		overlapped_context_.data.type = eOverlappedType::Send;
-		overlapped_context_.callback = session_;
 	}
 
 	SessionSender::~SessionSender()
 	{
-		session_ = nullptr;
+		session_.reset();
+	}
+
+	void SessionSender::OnAccept(std::weak_ptr<SocketSession> session)
+	{
+		session_ = session;
+		overlapped_context_.callback = session;
 	}
 
 	void SessionSender::SendAsync(uint8_t* data, uint32_t size)
 	{
 		std::lock_guard<std::recursive_mutex> lock(lock_);
 
+		auto session = session_.lock();
+		if (session == nullptr) {
+			return;
+		}
+
 		// send_queue_에 버퍼 데이터를 생성하고
 		send_queue_.push(SocketBuffer::Allocate(data, size));
 
 		// completion port에 signal을 날려주자
-		PostCompletionPortSignal(session_->GetIocpHandle());
+		PostCompletionPortSignal(session->GetIocpHandle());
 	}
 
 	void SessionSender::OnSend(DWORD dwError, DWORD dwBytesTransferred)
@@ -209,7 +223,7 @@ namespace iocplib {
 		DWORD dwSent = 0U;
 		DWORD dwFlags = 0U;
 		overlapped_context_.Offset = 0U;
-		int ret = ::WSASend(session_->handle(), wsabufs.data(), dwBufferCount, &dwSent, dwFlags, &overlapped_context_, nullptr);
+		int ret = ::WSASend(session_.lock()->handle(), wsabufs.data(), dwBufferCount, &dwSent, dwFlags, &overlapped_context_, nullptr);
 		if (ret == SOCKET_ERROR) {
 			int err = ::WSAGetLastError();
 			if (err != WSA_IO_PENDING) {
@@ -227,8 +241,8 @@ namespace iocplib {
 
 		if (!post_send_signal) {
 			if (!::PostQueuedCompletionStatus(iocp_handle, 0, 0, &overlapped_context_)) {
-				// GetLastError();
-				// throw exception
+
+				throw WinSockException("", GetLastError());
 			}
 
 			post_send_signal = true;
@@ -236,8 +250,6 @@ namespace iocplib {
 	}
 
 	SocketSession::SocketSession()
-		: receiver_(this)
-		, sender_(this)
 	{
 	}
 
@@ -254,6 +266,9 @@ namespace iocplib {
 		iocp_->Attach(reinterpret_cast<HANDLE>(handle()));
 
 		// todo: nagle option 끄기
+
+		receiver_.OnAccept(weak_from_this());
+		sender_.OnAccept(weak_from_this());
 
 		uint32_t error = receiver_.BeginReceive();
 	}

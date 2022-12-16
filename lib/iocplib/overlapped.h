@@ -24,7 +24,7 @@ namespace iocplib {
         } Data;
 
         Data data;
-        OverlappedEventInterface* callback{ nullptr };
+        std::weak_ptr<OverlappedEventInterface> callback;
     };
 
     struct OverlappedEventInterface

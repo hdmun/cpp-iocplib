@@ -40,7 +40,10 @@ namespace iocplib {
 
 				DWORD dwError = bSuccess ? 0 : ::GetLastError();
 				OverlappedContext context = *reinterpret_cast<OverlappedContext*>(lpOverlapped);
-				context.callback->OnCompleteOverlappedIO(context.data, dwError, dwNumberOfBytesTransferred, completionKey);
+				auto callback = context.callback.lock();
+				if (callback != nullptr) {
+					callback->OnCompleteOverlappedIO(context.data, dwError, dwNumberOfBytesTransferred, completionKey);
+				}
 			}
 		}
 

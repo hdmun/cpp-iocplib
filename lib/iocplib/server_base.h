@@ -9,7 +9,7 @@ namespace iocplib {
 	{
 	public:
 		ServerBase()
-			: acceptor_(std::make_unique<Acceptor<_Session> >())
+			: acceptor_(std::make_shared<Acceptor<_Session> >())
 		{
 		}
 
@@ -41,7 +41,7 @@ namespace iocplib {
 		ServerBase operator=(const ServerBase&) = delete;
 
 	private:
-		std::unique_ptr<Acceptor<_Session> > acceptor_;
+		std::shared_ptr<Acceptor<_Session> > acceptor_;
 	};
 }
 #endif

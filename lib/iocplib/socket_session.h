@@ -11,20 +11,22 @@ namespace iocplib {
 	class SessionReceiver
 	{
 	public:
-		SessionReceiver(SocketSession* session);
+		SessionReceiver();
 		virtual ~SessionReceiver();
-
-		int32_t BeginReceive();
-		void OnReceive(DWORD dwError, DWORD dwBytesTransferred);
 
 		SessionReceiver(const SessionReceiver&) = delete;
 		SessionReceiver operator=(const SessionReceiver&) = delete;
+
+		void OnAccept(std::weak_ptr<SocketSession> session);
+
+		int32_t BeginReceive();
+		void OnReceive(DWORD dwError, DWORD dwBytesTransferred);
 
 	private:
 		int32_t OnError(DWORD dwError);
 
 	private:
-		SocketSession* session_;
+		std::weak_ptr<SocketSession> session_;
 
 		std::recursive_mutex lock_;
 		OverlappedContext overlapped_context_;
@@ -37,11 +39,13 @@ namespace iocplib {
 	class SessionSender
 	{
 	public:
-		SessionSender(SocketSession* session);
+		SessionSender();
 		virtual ~SessionSender();
 
 		SessionSender(const SessionSender&) = delete;
 		SessionSender operator=(const SessionSender&) = delete;
+
+		void OnAccept(std::weak_ptr<SocketSession> session);
 
 		void SendAsync(uint8_t* data, uint32_t size);
 
@@ -52,7 +56,7 @@ namespace iocplib {
 		void PostCompletionPortSignal(HANDLE iocp_handle);
 
 	private:
-		SocketSession* session_;
+		std::weak_ptr<SocketSession> session_;
 
 		std::recursive_mutex lock_;
 		OverlappedContext overlapped_context_;
@@ -69,6 +73,7 @@ namespace iocplib {
 	class SocketSession
 		: public winsocklib::WinSock
 		, public OverlappedEventInterface
+		, public std::enable_shared_from_this<SocketSession>
 	{
 	protected:
 		SocketSession();
@@ -88,6 +93,7 @@ namespace iocplib {
 
 	private:
 		IoCompletionPort* iocp_{ nullptr };
+
 		SessionReceiver receiver_;
 		SessionSender sender_;
 	};

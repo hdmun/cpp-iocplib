@@ -79,6 +79,7 @@ namespace iocplib {
 	template<typename _Socket>
 	class Acceptor
 		: public OverlappedEventInterface
+		, public std::enable_shared_from_this<Acceptor<_Socket> >
 	{
 	public:
 		Acceptor()
@@ -104,7 +105,7 @@ namespace iocplib {
 			accept_sockets_.reserve(accepts);
 			for (int i = 0; i < accepts; i++) {
 				auto socket = std::make_unique<AcceptSocket<_Socket> >();
-				socket->callback = this;
+				socket->callback = this->shared_from_this();
 				socket->data.obj = socket.get();
 				socket->PostAccept(listen_socket_.handle());
 				accept_sockets_.push_back(std::move(socket));
