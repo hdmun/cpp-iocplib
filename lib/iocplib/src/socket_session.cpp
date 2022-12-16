@@ -104,8 +104,9 @@ namespace iocplib {
 
 		default:
 			recv_error_ = dwError;
-			return dwError;
+			break;
 		}
+		return dwError;
 	}
 
 	SessionSender::SessionSender(SocketSession* session)
