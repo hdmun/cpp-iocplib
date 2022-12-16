@@ -130,22 +130,6 @@ namespace iocplib {
 		overlapped_context_.callback = session;
 	}
 
-	void SessionSender::SendAsync(uint8_t* data, uint32_t size)
-	{
-		std::lock_guard<std::recursive_mutex> lock(lock_);
-
-		auto session = session_.lock();
-		if (session == nullptr) {
-			return;
-		}
-
-		// send_queue_에 버퍼 데이터를 생성하고
-		send_queue_.push(SocketBuffer::Allocate(data, size));
-
-		// completion port에 signal을 날려주자
-		PostCompletionPortSignal(session->GetIocpHandle());
-	}
-
 	void SessionSender::OnSend(DWORD dwError, DWORD dwBytesTransferred)
 	{
 		std::lock_guard<std::recursive_mutex> lock(lock_);
@@ -190,6 +174,22 @@ namespace iocplib {
 
 			// todo: 에러 전파
 		}
+	}
+
+	void SessionSender::SendAsync(uint8_t* data, uint32_t size)
+	{
+		std::lock_guard<std::recursive_mutex> lock(lock_);
+
+		auto session = session_.lock();
+		if (session == nullptr) {
+			return;
+		}
+
+		// send_queue_에 버퍼 데이터를 생성하고
+		send_queue_.push(SocketBuffer::Allocate(data, size));
+
+		// completion port에 signal을 날려주자
+		PostCompletionPortSignal(session->GetIocpHandle());
 	}
 
 	int32_t SessionSender::BeginSend()

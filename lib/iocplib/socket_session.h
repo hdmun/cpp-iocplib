@@ -46,10 +46,9 @@ namespace iocplib {
 		SessionSender operator=(const SessionSender&) = delete;
 
 		void OnAccept(std::weak_ptr<SocketSession> session);
+		void OnSend(DWORD dwError, DWORD dwBytesTransferred);
 
 		void SendAsync(uint8_t* data, uint32_t size);
-
-		void OnSend(DWORD dwError, DWORD dwBytesTransferred);
 
 	private:
 		int32_t BeginSend();
