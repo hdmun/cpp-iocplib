@@ -29,7 +29,6 @@ namespace winsocklib {
 		{
 			handle_ = ::socket(af, type, protocol);
 			if (handle_ == INVALID_SOCKET) {
-				assert(false);
 				throw WinSockException("failed to create socket", ::WSAGetLastError());
 			}
 		}
@@ -38,7 +37,6 @@ namespace winsocklib {
 		{
 			int bind_ = ::bind(handle_, pAddr, len);
 			if (bind_ == SOCKET_ERROR) {
-				assert(false);
 				throw WinSockException("failed to bind socket", ::WSAGetLastError());
 			}
 		}
@@ -47,7 +45,6 @@ namespace winsocklib {
 		{
 			int bind_ = ::listen(handle_, backlog);
 			if (bind_ == SOCKET_ERROR) {
-				assert(false);
 				throw WinSockException("failed to listen socket", ::WSAGetLastError());
 			}
 		}
@@ -59,7 +56,7 @@ namespace winsocklib {
 				return true;
 			}
 
-			assert(false && "failed to connect socket");
+			// assert(false && "failed to connect socket");
 			return false;
 		}
 

@@ -49,6 +49,7 @@ namespace iocplib {
 
 		void Join()
 		{
+			assert(thread_.joinable());
 			thread_.join();
 		}
 
@@ -128,6 +129,7 @@ namespace iocplib {
 
 		void Detach()
 		{
+			assert(attached_sockets_ > 0);
 			attached_sockets_--;
 		}
 
@@ -137,7 +139,7 @@ namespace iocplib {
 		std::mutex worker_lock_;
 		std::vector< std::unique_ptr<IoCompletionPortWorker> > workers_;
 
-		inline static std::atomic<uint32_t> attached_sockets_{ 0 };
+		std::atomic<uint32_t> attached_sockets_{ 0 };
 	};
 }
 

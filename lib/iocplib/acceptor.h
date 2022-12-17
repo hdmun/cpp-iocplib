@@ -111,16 +111,21 @@ namespace iocplib {
 				accept_sockets_.push_back(std::move(socket));
 			}
 
+			opened_ = true;
 			return true;
 		}
 
 		void Close()
 		{
-			io_completion_port_->Detach();
+			if (opened_) {
+				io_completion_port_->Detach();
+			}
+
 			io_completion_port_->Close();
 			io_completion_port_ = nullptr;
 
 			listen_socket_.Close();
+			opened_ = false;
 		}
 
 		virtual void OnCompleteOverlappedIO(const OverlappedContext::Data& data, DWORD dwError, DWORD dwBytesTransferred, ULONG_PTR completionKey)
@@ -159,6 +164,7 @@ namespace iocplib {
 	private:
 		std::unique_ptr< IoCompletionPort > io_completion_port_;
 		winsocklib::WinSock listen_socket_;
+		bool opened_{ false };
 
 		std::vector< std::unique_ptr<AcceptSocket<_Socket> > > accept_sockets_;
 
